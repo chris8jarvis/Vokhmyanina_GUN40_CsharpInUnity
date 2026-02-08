@@ -7,8 +7,8 @@ using UnityEditor;
 public class Mover : MonoBehaviour
 {
     [Header("Movement Settings")]
-    [SerializeField] private Vector3 _startOffset;  // ← Смещение от текущей позиции
-    [SerializeField] private Vector3 _endOffset;    // ← Смещение от текущей позиции
+    [SerializeField] private Vector3 _startOffset; 
+    [SerializeField] private Vector3 _endOffset; 
     [SerializeField] private float _speed = 2f;
     [SerializeField] private float _delay = 1f;
     
@@ -31,7 +31,7 @@ public class Mover : MonoBehaviour
         Gizmos.color = Color.yellow;
         Gizmos.DrawLine(startPos, endPos);
         
-        // Подписи
+        
         #if UNITY_EDITOR
         Handles.Label(startPos + Vector3.up * 0.5f, "Start");
         Handles.Label(endPos + Vector3.up * 0.5f, "End");
