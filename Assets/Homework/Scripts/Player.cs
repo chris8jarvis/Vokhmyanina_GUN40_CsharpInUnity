@@ -26,7 +26,7 @@ namespace Netologia.Homework
 				StartCoroutine(Reloader());
 				_ball.isKinematic = false;
 				_ball.transform.parent = null;
-				_ball.linearVelocity = transform.forward * _startVelocity;
+				_ball.velocity = transform.forward * _startVelocity;
 				Destroy(_ball.gameObject, _lifetime);
 			}
 		}
