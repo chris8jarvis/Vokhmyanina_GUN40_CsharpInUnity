@@ -5,6 +5,8 @@ public class MainInstaller : MonoInstaller
 {
     public override void InstallBindings()
     {
-        Debug.Log("MainInstaller works!");
+        Container.Bind<SceneController>().AsSingle();
+        
+        Debug.Log("MainInstaller: SceneController registered");
     }
 }
