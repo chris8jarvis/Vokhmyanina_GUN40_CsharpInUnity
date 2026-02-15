@@ -1,18 +1,42 @@
-using System.Collections;
-using System.Collections.Generic;
+using UnityEngine.EventSystems;
 using UnityEngine;
+using System;
 
-public class Cell : MonoBehaviour
+public class Cell : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private GameObject focusMesh;
+    [SerializeField] private GameObject selectMesh;
+    
+    public event Action<Cell> OnPointerClickEvent;
+    public void OnPointerEnter(PointerEventData eventData)
     {
-        
+         Debug.Log($"Enter on {name}");
+        focusMesh.SetActive(true);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnPointerExit(PointerEventData eventData)
     {
-        
+        Debug.Log($"Exit on {name}");
+        focusMesh.SetActive(false);
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        OnPointerClickEvent?.Invoke(this);
+    }
+
+    public void SetSelect(Material material)
+    {
+        selectMesh.SetActive(true);
+        var renderer = selectMesh.GetComponent<MeshRenderer>();
+        if (renderer != null)
+        {
+            renderer.material = material;
+        }
+    }
+
+    public void ResetSelect()
+    {
+        selectMesh.SetActive(false);
     }
 }
