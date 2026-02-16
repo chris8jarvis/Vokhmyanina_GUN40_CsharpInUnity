@@ -10,13 +10,11 @@ public class Cell : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     public event Action<Cell> OnPointerClickEvent;
     public void OnPointerEnter(PointerEventData eventData)
     {
-         Debug.Log($"Enter on {name}");
         focusMesh.SetActive(true);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        Debug.Log($"Exit on {name}");
         focusMesh.SetActive(false);
     }
 
