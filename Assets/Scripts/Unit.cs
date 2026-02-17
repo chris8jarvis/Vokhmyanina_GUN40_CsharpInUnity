@@ -5,12 +5,27 @@ using System;
 public class Unit : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     [SerializeField] private float moveSpeed = 5f;
+
+    [SerializeField] private Team team; // Команда юнита
+    
     private Cell currentCell;
     private bool isMoving = false;
     private Vector3 targetPosition;
     private Cell targetCell;
     
     public event Action OnMoveEndCallback;
+
+    public Cell CurrentCell 
+    { 
+        get => currentCell; 
+        set => currentCell = value; 
+    }
+    
+    public Team Team 
+    { 
+        get => team; 
+        set => team = value; 
+    }
     
     private void Start()
     {

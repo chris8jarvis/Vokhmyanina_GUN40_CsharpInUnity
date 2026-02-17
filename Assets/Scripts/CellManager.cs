@@ -1,18 +1,134 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections.Generic;
+using System.Linq;
 
 public class CellManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public event System.Action<Cell> OnCellClicked; // Событие для клика по клетке
+    
+    private List<Cell> allCells = new List<Cell>();
+    private List<Unit> allUnits = new List<Unit>();
+    
+    private void Start()
     {
+        FindAllCells();
+        FindAllUnits();
+        SetupCellNeighbours();
+        SetupCellClickEvents();
+        SetupUnitCellRelations();
+    }
+    
+    private void FindAllCells()
+    {
+        allCells = FindObjectsOfType<Cell>().ToList();
+        Debug.Log($"Found {allCells.Count} cells on scene");
+    }
+    
+    private void FindAllUnits()
+    {
+        allUnits = FindObjectsOfType<Unit>().ToList();
+        Debug.Log($"Found {allUnits.Count} units on scene");
+    }
+    
+    private void SetupCellNeighbours()
+    {
+        foreach (Cell cell in allCells)
+        {
+            NeighbourType neighbours = CheckNeighbours(cell);
+            // Здесь нужно сохранить neighbours в клетку
+            // Для этого добавим позже свойство в Cell
+            Debug.Log($"Cell {cell.name} neighbours: {neighbours}");
+        }
+    }
+    
+    // Проверка соседей для конкретной клетки
+    private NeighbourType CheckNeighbours(Cell cell)
+    {
+        NeighbourType result = NeighbourType.None;
         
+        Vector3 cellPos = cell.transform.position;
+        float checkDistance = 1.1f; // Немного больше размера клетки (учитывая Scale)
+        
+        // Проверяем каждое направление
+        if (HasCellAtPosition(cellPos + Vector3.left * checkDistance))
+            result |= NeighbourType.Left;
+            
+        if (HasCellAtPosition(cellPos + Vector3.right * checkDistance))
+            result |= NeighbourType.Right;
+            
+        if (HasCellAtPosition(cellPos + Vector3.forward * checkDistance))
+            result |= NeighbourType.Top;
+            
+        if (HasCellAtPosition(cellPos + Vector3.back * checkDistance))
+            result |= NeighbourType.Bottom;
+            
+        return result;
+    }
+    
+    // Проверяет, есть ли клетка в указанной позиции
+    private bool HasCellAtPosition(Vector3 position)
+    {
+        Collider[] colliders = Physics.OverlapSphere(position, 0.1f);
+        foreach (var collider in colliders)
+        {
+            if (collider.GetComponent<Cell>() != null)
+                return true;
+        }
+        return false;
+    }
+    
+    // Подписывается на клики клеток
+    private void SetupCellClickEvents()
+    {
+        foreach (Cell cell in allCells)
+        {
+            cell.OnPointerClickEvent += OnCellClickedHandler;
+        }
+    }
+    
+    private void OnCellClickedHandler(Cell cell)
+    {
+        Debug.Log($"Cell clicked: {cell.name}");
+        OnCellClicked?.Invoke(cell);
+    }
+    
+    // Находит для каждого юнита его клетку и задает взаимные ссылки
+    private void SetupUnitCellRelations()
+    {
+        foreach (Unit unit in allUnits)
+        {
+            Cell cellUnderUnit = FindCellUnderUnit(unit);
+            
+            if (cellUnderUnit != null)
+            {
+                // Здесь нужны свойства в Unit и Cell
+                // unit.CurrentCell = cellUnderUnit;
+                // cellUnderUnit.CurrentUnit = unit;
+                Debug.Log($"Unit {unit.name} stands on cell {cellUnderUnit.name}");
+            }
+            else
+            {
+                Debug.LogWarning($"Unit {unit.name} is not on any cell!");
+            }
+        }
+    }
+    
+    // Находит клетку под юнитом (похоже на то, что делали в Unit)
+    private Cell FindCellUnderUnit(Unit unit)
+    {
+        Vector3 rayStart = unit.transform.position + Vector3.up * 0.5f;
+        RaycastHit[] hits = Physics.RaycastAll(rayStart, Vector3.down, 2f);
+        
+        foreach (var hit in hits)
+        {
+            if (hit.collider.gameObject == unit.gameObject) continue;
+            
+            Cell cell = hit.collider.GetComponent<Cell>();
+            if (cell != null)
+                return cell;
+        }
+        
+        return null;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

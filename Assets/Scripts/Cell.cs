@@ -6,8 +6,23 @@ public class Cell : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 {
     [SerializeField] private GameObject focusMesh;
     [SerializeField] private GameObject selectMesh;
+
+    [SerializeField] private NeighbourType neighbourType; // Тип соседства
+    [SerializeField] private Unit currentUnit; // Юнит, стоящий на клетке
     
     public event Action<Cell> OnPointerClickEvent;
+
+     public NeighbourType NeighbourType 
+    { 
+        get => neighbourType; 
+        set => neighbourType = value; 
+    }
+    
+    public Unit CurrentUnit 
+    { 
+        get => currentUnit; 
+        set => currentUnit = value; 
+    }
     public void OnPointerEnter(PointerEventData eventData)
     {
         focusMesh.SetActive(true);
