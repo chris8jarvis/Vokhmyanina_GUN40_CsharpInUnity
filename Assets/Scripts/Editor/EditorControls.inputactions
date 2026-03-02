@@ -1,0 +1,77 @@
+{
+    "version": 1,
+    "name": "EditorControls",
+    "maps": [
+        {
+            "name": "Cheats",
+            "id": "f14179b1-a262-442e-bea9-a21d119f8ee8",
+            "actions": [
+                {
+                    "name": "NextTurn",
+                    "type": "Button",
+                    "id": "af8d1c35-fdae-4a46-af99-52968675e728",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Kill",
+                    "type": "Button",
+                    "id": "e5c88a50-9d7f-461c-80bd-3dfab873ac13",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "467f27aa-de4b-41b8-9db3-849f4aa4c165",
+                    "path": "<Keyboard>/numpad1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NextTurn",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5615181c-87cb-4fb3-af9c-5e7a4e5cd0c7",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NextTurn",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9ea4fb2a-db7d-4909-b552-3d6dec497962",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Kill",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "51915bad-70b8-419f-aaea-b7e3594765da",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Kill",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
