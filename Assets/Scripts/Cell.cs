@@ -1,6 +1,8 @@
 using UnityEngine.EventSystems;
 using UnityEngine;
+using Controllers;
 using System;
+using Units;
 
 public class Cell : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
@@ -9,7 +11,10 @@ public class Cell : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     [SerializeField] private NeighbourType neighbourType; // Тип соседства
     [SerializeField] private Unit currentUnit; // Юнит, стоящий на клетке
-    
+
+    [SerializeField] private BattleController battleController;
+
+    public Vector2Int BoardPosition { get; set; }
     public event Action<Cell> OnPointerClickEvent;
 
      public NeighbourType NeighbourType 
@@ -35,7 +40,11 @@ public class Cell : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        OnPointerClickEvent?.Invoke(this);
+        Debug.Log($"Cell clicked at position: {BoardPosition}");
+        if (battleController != null)
+            battleController.ProcessClick(this);
+
+        //OnPointerClickEvent?.Invoke(this);
     }
 
     public void SetSelect(Material material)

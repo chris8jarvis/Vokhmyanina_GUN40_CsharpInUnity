@@ -11,8 +11,28 @@ public enum NeighbourType
     Cross = 7,          // Все четыре стороны
 }
 
-public enum Team
+
+// public enum Team
+// {
+//     Player1 = 0,
+//     Player2 = 1
+// }
+
+public enum Player
 {
-    Player1 = 0,
-    Player2 = 1
+    White,
+    Black
+}
+
+public enum UnitType
+{
+    Man,    // Простая шашка
+    King    // Дамка
+}
+
+public enum GameState
+{
+    SelectUnit,     // Выбираем фигуру
+    SelectDestination, // Выбираем клетку для хода
+    EnemyTurn       // Ход противника
 }

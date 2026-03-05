@@ -1,18 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Units;
 
-public class SelectCommand : MonoBehaviour
+namespace Commands
 {
-    // Start is called before the first frame update
-    void Start()
+    public class SelectCommand : IGameplayCommand
     {
+        private Unit selectedUnit;
         
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public void Interact(Cell cell)
+        {
+            if (cell.CurrentUnit != null)
+            {
+                selectedUnit = cell.CurrentUnit;
+                Debug.Log($"Selected {selectedUnit.Player} at {cell.BoardPosition}");
+            }
+            else
+            {
+                Debug.Log("Empty cell clicked");
+            }
+        }
     }
 }
