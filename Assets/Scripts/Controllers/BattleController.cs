@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using Commands;
 using Units;
 
@@ -8,6 +9,7 @@ namespace Controllers
     {
         [Header("References")]
         [SerializeField] private PlayerController playerController;
+        [SerializeField] private InputActionAsset inputActions;
         
         [Header("State")]
         public Player currentPlayer = Player.White;
@@ -15,6 +17,31 @@ namespace Controllers
         
         private IGameplayCommand currentCommand;
         private Unit selectedUnit;
+        private InputActionMap uiActionMap;
+        private InputAction cancelAction;
+        private InputAction submitAction;
+
+        private void Awake()
+        {
+            // Находим UI Action Map
+            uiActionMap = inputActions.FindActionMap("UI");
+            cancelAction = uiActionMap.FindAction("Cancel");
+            submitAction = uiActionMap.FindAction("Submit");
+        }
+
+        private void OnEnable()
+        {
+            cancelAction.performed += OnCancel;
+            submitAction.performed += OnSubmit;
+            cancelAction.Enable();
+            submitAction.Enable();
+        }
+
+        private void OnDisable()
+        {
+            cancelAction.performed -= OnCancel;
+            submitAction.performed -= OnSubmit;
+        }
         
         private void Start()
         {
@@ -22,6 +49,26 @@ namespace Controllers
             currentPlayer = Player.White;
             currentState = GameState.SelectUnit;
             Debug.Log($"Game started. {currentPlayer} turn");
+        }
+
+        private void OnCancel(InputAction.CallbackContext context)
+        {
+            CancelAction();
+        }
+
+        private void OnSubmit(InputAction.CallbackContext context)
+        {
+            // TODO: Подтверждение действия (когда будет реализовано)
+            Debug.Log("Submit pressed");
+        }
+
+        public void CancelAction()
+        {
+            // Сброс выбора (по ESC)
+            selectedUnit = null;
+            currentCommand = null;
+            currentState = GameState.SelectUnit;
+            Debug.Log("Action cancelled");
         }
         
         
@@ -52,13 +99,5 @@ namespace Controllers
             }
         }
         
-        public void CancelAction()
-        {
-            // Сброс выбора (по ESC)
-            selectedUnit = null;
-            currentCommand = null;
-            currentState = GameState.SelectUnit;
-            Debug.Log("Action cancelled");
-        }
     }
 }
