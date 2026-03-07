@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Units;
 
-public class CellManager : MonoBehaviour
+public class Battlefield : MonoBehaviour
 {
     public event System.Action<Cell> OnCellClicked; // Событие для клика по клетке
     
@@ -36,8 +36,7 @@ public class CellManager : MonoBehaviour
         foreach (Cell cell in allCells)
         {
             NeighbourType neighbours = CheckNeighbours(cell);
-            // Здесь нужно сохранить neighbours в клетку
-            // Для этого добавим позже свойство в Cell
+            cell.NeighbourType = neighbours;
             Debug.Log($"Cell {cell.name} neighbours: {neighbours}");
         }
     }
@@ -81,10 +80,10 @@ public class CellManager : MonoBehaviour
     // Подписывается на клики клеток
     private void SetupCellClickEvents()
     {
-        foreach (Cell cell in allCells)
-        {
-            cell.OnPointerClickEvent += OnCellClickedHandler;
-        }
+        // foreach (Cell cell in allCells)
+        // {
+        //     cell.OnPointerClickEvent += OnCellClickedHandler;
+        // }
     }
     
     private void OnCellClickedHandler(Cell cell)
@@ -102,9 +101,8 @@ public class CellManager : MonoBehaviour
             
             if (cellUnderUnit != null)
             {
-                // Здесь нужны свойства в Unit и Cell
-                // unit.CurrentCell = cellUnderUnit;
-                // cellUnderUnit.CurrentUnit = unit;
+                unit.CurrentCell = cellUnderUnit;
+                cellUnderUnit.CurrentUnit = unit;
                 Debug.Log($"Unit {unit.name} stands on cell {cellUnderUnit.name}");
             }
             else
