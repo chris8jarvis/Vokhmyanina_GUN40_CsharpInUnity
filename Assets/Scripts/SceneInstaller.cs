@@ -1,19 +1,35 @@
 using UnityEngine;
 using Zenject;
+using UnityEngine.InputSystem;
+using Controllers;
+using Units;
 
 public class SceneInstaller : MonoInstaller
 {
+
+    [SerializeField] private InputActionAsset inputActions;
+    [SerializeField] private BattleController battleController;
+    [SerializeField] private PlayerController playerController;
+    [SerializeField] private Battlefield battlefield;
+
     public override void InstallBindings()
     {
-        Controls controls = new Controls();
+        Container.Bind<InputActionAsset>()
+                 .FromInstance(inputActions)
+                 .AsSingle();
+
+        Container.Bind<BattleController>()
+                 .FromInstance(battleController)
+                 .AsSingle();
         
-        // Регистрируем сам Controls (синглтон)
-        Container.Bind<Controls>().FromInstance(controls).AsSingle();
+        Container.Bind<PlayerController>()
+                 .FromInstance(playerController)
+                 .AsSingle();
         
-        // Регистрируем карту GameActions (чтобы можно было получить controls.Game)
-        Container.Bind<Controls.GameActions>().FromInstance(controls.Game).AsSingle();
+        Container.Bind<Battlefield>()
+                 .FromInstance(battlefield)
+                 .AsSingle();
         
-        // Включаем Controls (чтобы они работали)
-        controls.Game.Enable();
+        Debug.Log("SceneInstaller: All bindings registered");
     }
 }

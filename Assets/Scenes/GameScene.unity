@@ -889,7 +889,7 @@ GameObject:
   - component: {fileID: 259600845}
   - component: {fileID: 259600844}
   m_Layer: 0
-  m_Name: CellManager
+  m_Name: Battlefield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5199,9 +5199,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1783376785}
   - component: {fileID: 1783376787}
-  - component: {fileID: 1783376786}
+  - component: {fileID: 1783376788}
   m_Layer: 0
-  m_Name: GameInstaller
+  m_Name: SceneInstaller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5222,18 +5222,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1783376786
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1783376784}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b7b256796f47cc4e96eb1451b0dc12e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1783376787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5248,7 +5236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _scriptableObjectInstallers: []
   _monoInstallers:
-  - {fileID: 1783376786}
+  - {fileID: 1783376788}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -5266,6 +5254,22 @@ MonoBehaviour:
   _parentNewObjectsUnderSceneContext: 0
   _contractNames: []
   _parentContractNames: []
+--- !u!114 &1783376788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783376784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b7b256796f47cc4e96eb1451b0dc12e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputActions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  battleController: {fileID: 1468938519}
+  playerController: {fileID: 1787096826}
+  battlefield: {fileID: 259600844}
 --- !u!1 &1787096825
 GameObject:
   m_ObjectHideFlags: 0

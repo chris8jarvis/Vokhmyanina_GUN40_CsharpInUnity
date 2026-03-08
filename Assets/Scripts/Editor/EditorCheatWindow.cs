@@ -51,11 +51,11 @@ public class EditorCheatWindow : EditorWindow
          Debug.Log("Next Turn");
         
         
-        var cellManager = FindAnyObjectByType<CellManager>();
-        if (cellManager != null)
+        var battlefield = FindAnyObjectByType<Battlefield>();
+        if (battlefield != null)
         {
         // Например, cellManager.NextTurn();
-            Debug.Log("Found CellManager, next turn could be made");
+            Debug.Log("Found Battlefield, next turn could be made");
         }
         // TODO: Найти ISharedData и передать ход
         // var sharedData = FindAnyObjectByType<MonoBehaviour>(FindObjectsInactive.Include) as ISharedData;
