@@ -15,6 +15,10 @@ namespace Commands
             {
                 selectedUnit = cell.CurrentUnit;
                 Debug.Log($"Selected {selectedUnit.Player} at {cell.BoardPosition}");
+
+                var battlefield = GameObject.FindObjectOfType<Battlefield>();
+                var moves = MoveValidator.GetAvailableMoves(selectedUnit, battlefield);
+                Debug.Log($"Available moves: {moves.Count}");
             }
             else
             {

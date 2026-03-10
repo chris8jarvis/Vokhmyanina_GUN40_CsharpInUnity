@@ -78,10 +78,13 @@ namespace Controllers
             {
                 currentCommand.Interact(cell);
                 
-                // После выполнения команды сбрасываем её
+                // После выполнения MoveCommand возвращаемся к выбору фигуры
                 if (currentState == GameState.SelectDestination)
                 {
-                    // TODO: Переключение игрока после хода
+                // Сбрасываем состояние
+                    currentState = GameState.SelectUnit;
+                    currentCommand = null;
+                    selectedUnit = null;
                 }
             }
         }

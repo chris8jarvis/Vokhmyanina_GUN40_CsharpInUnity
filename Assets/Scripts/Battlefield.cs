@@ -47,9 +47,8 @@ public class Battlefield : MonoBehaviour
         NeighbourType result = NeighbourType.None;
         
         Vector3 cellPos = cell.transform.position;
-        float checkDistance = 1.1f; // Немного больше размера клетки (учитывая Scale)
+        float checkDistance = 1.1f; 
         
-        // Проверяем каждое направление
         if (HasCellAtPosition(cellPos + Vector3.left * checkDistance))
             result |= NeighbourType.Left;
             
@@ -65,7 +64,7 @@ public class Battlefield : MonoBehaviour
         return result;
     }
     
-    // Проверяет, есть ли клетка в указанной позиции
+    
     private bool HasCellAtPosition(Vector3 position)
     {
         Collider[] colliders = Physics.OverlapSphere(position, 0.1f);
@@ -77,7 +76,7 @@ public class Battlefield : MonoBehaviour
         return false;
     }
     
-    // Подписывается на клики клеток
+    
     private void SetupCellClickEvents()
     {
         // foreach (Cell cell in allCells)
@@ -92,7 +91,7 @@ public class Battlefield : MonoBehaviour
         OnCellClicked?.Invoke(cell);
     }
     
-    // Находит для каждого юнита его клетку и задает взаимные ссылки
+    
     private void SetupUnitCellRelations()
     {
         foreach (Unit unit in allUnits)
@@ -112,7 +111,6 @@ public class Battlefield : MonoBehaviour
         }
     }
     
-    // Находит клетку под юнитом (похоже на то, что делали в Unit)
     private Cell FindCellUnderUnit(Unit unit)
     {
         Vector3 rayStart = unit.transform.position + Vector3.up * 0.5f;
@@ -127,6 +125,16 @@ public class Battlefield : MonoBehaviour
                 return cell;
         }
         
+        return null;
+    }
+
+    public Cell GetCellAtPosition(int x, int y)
+    {
+        foreach (Cell cell in allCells)
+        {
+            if (cell.BoardPosition.x == x && cell.BoardPosition.y == y)
+            return cell;
+        }
         return null;
     }
 

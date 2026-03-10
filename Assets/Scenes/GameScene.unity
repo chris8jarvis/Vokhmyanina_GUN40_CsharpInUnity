@@ -443,6 +443,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 292725135}
     m_Modifications:
+    - target: {fileID: 461785179002144844, guid: c0a6ea43a2735bc41ad86d36784e124a, type: 3}
+      propertyPath: battleController
+      value: 
+      objectReference: {fileID: 1468938519}
     - target: {fileID: 2941438858134485161, guid: c0a6ea43a2735bc41ad86d36784e124a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.16
@@ -505,6 +509,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 292725135}
     m_Modifications:
+    - target: {fileID: 461785179002144844, guid: c0a6ea43a2735bc41ad86d36784e124a, type: 3}
+      propertyPath: battleController
+      value: 
+      objectReference: {fileID: 1468938519}
     - target: {fileID: 2941438858134485161, guid: c0a6ea43a2735bc41ad86d36784e124a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.81
@@ -571,6 +579,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CheckerWhite (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 5997282642216752757, guid: c27eda5f09271684895f01f4968ce2b5, type: 3}
+      propertyPath: battleController
+      value: 
+      objectReference: {fileID: 1468938519}
     - target: {fileID: 7599795824706028000, guid: c27eda5f09271684895f01f4968ce2b5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.28
@@ -2073,6 +2085,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CheckerWhite (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 5997282642216752757, guid: c27eda5f09271684895f01f4968ce2b5, type: 3}
+      propertyPath: battleController
+      value: 
+      objectReference: {fileID: 1468938519}
     - target: {fileID: 7599795824706028000, guid: c27eda5f09271684895f01f4968ce2b5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.79
@@ -2580,6 +2596,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CheckerWhite (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 5997282642216752757, guid: c27eda5f09271684895f01f4968ce2b5, type: 3}
+      propertyPath: battleController
+      value: 
+      objectReference: {fileID: 1468938519}
     - target: {fileID: 7599795824706028000, guid: c27eda5f09271684895f01f4968ce2b5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.74
@@ -2703,6 +2723,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CheckerWhite (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5997282642216752757, guid: c27eda5f09271684895f01f4968ce2b5, type: 3}
+      propertyPath: battleController
+      value: 
+      objectReference: {fileID: 1468938519}
     - target: {fileID: 7599795824706028000, guid: c27eda5f09271684895f01f4968ce2b5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.78
@@ -2765,6 +2789,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CheckerWhite (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 5997282642216752757, guid: c27eda5f09271684895f01f4968ce2b5, type: 3}
+      propertyPath: battleController
+      value: 
+      objectReference: {fileID: 1468938519}
     - target: {fileID: 7599795824706028000, guid: c27eda5f09271684895f01f4968ce2b5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.29
@@ -2963,6 +2991,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CheckerWhite (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 5997282642216752757, guid: c27eda5f09271684895f01f4968ce2b5, type: 3}
+      propertyPath: battleController
+      value: 
+      objectReference: {fileID: 1468938519}
     - target: {fileID: 7599795824706028000, guid: c27eda5f09271684895f01f4968ce2b5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.3
@@ -3524,6 +3556,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 292725135}
     m_Modifications:
+    - target: {fileID: 461785179002144844, guid: c0a6ea43a2735bc41ad86d36784e124a, type: 3}
+      propertyPath: battleController
+      value: 
+      objectReference: {fileID: 1468938519}
     - target: {fileID: 2941438858134485161, guid: c0a6ea43a2735bc41ad86d36784e124a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.32
@@ -3872,6 +3908,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CheckerWhite (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5997282642216752757, guid: c27eda5f09271684895f01f4968ce2b5, type: 3}
+      propertyPath: battleController
+      value: 
+      objectReference: {fileID: 1468938519}
     - target: {fileID: 7599795824706028000, guid: c27eda5f09271684895f01f4968ce2b5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.32
@@ -4515,6 +4555,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CheckerWhite (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5997282642216752757, guid: c27eda5f09271684895f01f4968ce2b5, type: 3}
+      propertyPath: battleController
+      value: 
+      objectReference: {fileID: 1468938519}
     - target: {fileID: 7599795824706028000, guid: c27eda5f09271684895f01f4968ce2b5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.84
@@ -4668,6 +4712,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CheckerWhite (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 5997282642216752757, guid: c27eda5f09271684895f01f4968ce2b5, type: 3}
+      propertyPath: battleController
+      value: 
+      objectReference: {fileID: 1468938519}
     - target: {fileID: 7599795824706028000, guid: c27eda5f09271684895f01f4968ce2b5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.24
@@ -4845,6 +4893,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 292725135}
     m_Modifications:
+    - target: {fileID: 461785179002144844, guid: c0a6ea43a2735bc41ad86d36784e124a, type: 3}
+      propertyPath: battleController
+      value: 
+      objectReference: {fileID: 1468938519}
     - target: {fileID: 2941438858134485161, guid: c0a6ea43a2735bc41ad86d36784e124a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.31
@@ -4907,6 +4959,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 292725135}
     m_Modifications:
+    - target: {fileID: 461785179002144844, guid: c0a6ea43a2735bc41ad86d36784e124a, type: 3}
+      propertyPath: battleController
+      value: 
+      objectReference: {fileID: 1468938519}
     - target: {fileID: 2941438858134485161, guid: c0a6ea43a2735bc41ad86d36784e124a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.84
@@ -5043,6 +5099,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CheckerWhite
       objectReference: {fileID: 0}
+    - target: {fileID: 5997282642216752757, guid: c27eda5f09271684895f01f4968ce2b5, type: 3}
+      propertyPath: battleController
+      value: 
+      objectReference: {fileID: 1468938519}
     - target: {fileID: 7599795824706028000, guid: c27eda5f09271684895f01f4968ce2b5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.2
@@ -5720,6 +5780,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 292725135}
     m_Modifications:
+    - target: {fileID: 461785179002144844, guid: c0a6ea43a2735bc41ad86d36784e124a, type: 3}
+      propertyPath: battleController
+      value: 
+      objectReference: {fileID: 1468938519}
     - target: {fileID: 2941438858134485161, guid: c0a6ea43a2735bc41ad86d36784e124a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.3
@@ -5978,6 +6042,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 292725135}
     m_Modifications:
+    - target: {fileID: 461785179002144844, guid: c0a6ea43a2735bc41ad86d36784e124a, type: 3}
+      propertyPath: battleController
+      value: 
+      objectReference: {fileID: 1468938519}
     - target: {fileID: 2941438858134485161, guid: c0a6ea43a2735bc41ad86d36784e124a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.18
@@ -6825,6 +6893,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 292725135}
     m_Modifications:
+    - target: {fileID: 461785179002144844, guid: c0a6ea43a2735bc41ad86d36784e124a, type: 3}
+      propertyPath: battleController
+      value: 
+      objectReference: {fileID: 1468938519}
     - target: {fileID: 2941438858134485161, guid: c0a6ea43a2735bc41ad86d36784e124a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.81
@@ -6891,6 +6963,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CheckerWhite (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 5997282642216752757, guid: c27eda5f09271684895f01f4968ce2b5, type: 3}
+      propertyPath: battleController
+      value: 
+      objectReference: {fileID: 1468938519}
     - target: {fileID: 7599795824706028000, guid: c27eda5f09271684895f01f4968ce2b5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.66
@@ -6958,6 +7034,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CheckerWhite (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 5997282642216752757, guid: c27eda5f09271684895f01f4968ce2b5, type: 3}
+      propertyPath: battleController
+      value: 
+      objectReference: {fileID: 1468938519}
     - target: {fileID: 7599795824706028000, guid: c27eda5f09271684895f01f4968ce2b5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.68
@@ -7016,6 +7096,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 292725135}
     m_Modifications:
+    - target: {fileID: 461785179002144844, guid: c0a6ea43a2735bc41ad86d36784e124a, type: 3}
+      propertyPath: battleController
+      value: 
+      objectReference: {fileID: 1468938519}
     - target: {fileID: 2941438858134485161, guid: c0a6ea43a2735bc41ad86d36784e124a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.83
@@ -7217,6 +7301,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 292725135}
     m_Modifications:
+    - target: {fileID: 461785179002144844, guid: c0a6ea43a2735bc41ad86d36784e124a, type: 3}
+      propertyPath: battleController
+      value: 
+      objectReference: {fileID: 1468938519}
     - target: {fileID: 2941438858134485161, guid: c0a6ea43a2735bc41ad86d36784e124a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.3
@@ -7525,6 +7613,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 292725135}
     m_Modifications:
+    - target: {fileID: 461785179002144844, guid: c0a6ea43a2735bc41ad86d36784e124a, type: 3}
+      propertyPath: battleController
+      value: 
+      objectReference: {fileID: 1468938519}
     - target: {fileID: 2941438858134485161, guid: c0a6ea43a2735bc41ad86d36784e124a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.8
@@ -7587,6 +7679,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 292725135}
     m_Modifications:
+    - target: {fileID: 461785179002144844, guid: c0a6ea43a2735bc41ad86d36784e124a, type: 3}
+      propertyPath: battleController
+      value: 
+      objectReference: {fileID: 1468938519}
     - target: {fileID: 2941438858134485161, guid: c0a6ea43a2735bc41ad86d36784e124a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.78
