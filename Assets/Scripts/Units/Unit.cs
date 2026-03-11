@@ -9,7 +9,7 @@ namespace Units
     {
         [SerializeField] private float moveSpeed = 5f;
 
-        [SerializeField] private Player player; // Команда юнита
+        [SerializeField] private Player player;
 
         [SerializeField] private Controllers.BattleController battleController;
 
@@ -19,6 +19,7 @@ namespace Units
         private bool isMoving = false;
         private Vector3 targetPosition;
         private Cell targetCell;
+        private bool isKing = false;
         
         public event Action OnMoveEndCallback;
 
@@ -28,12 +29,25 @@ namespace Units
             set => currentCell = value; 
         }
         
-        public Player Player //тут Team заменили на Player (public Player Player { get; set; })
+        public Player Player
         { 
             get => player; 
             set => player = value; 
         }
-        
+
+        public bool IsKing
+        { 
+            get => isKing; 
+            set => isKing = value; 
+        }
+
+        public void BecomeKing()
+        {
+            isKing = true;
+            transform.localScale = new Vector3(0.9f, 0.4f, 0.9f);
+            Debug.Log($"{Player} became King");
+        }
+
         private void Start()
         {
             FindCurrentCell();

@@ -16,16 +16,12 @@ namespace Commands
         {
             if (destination.CurrentUnit == null)
             {
-            Debug.Log($"Moving {selectedUnit.Player} to {destination.BoardPosition}");
-            // TODO: Добавить проверку правил шашек
-            // TODO: Здесь будем вызывать PlayerController для визуализации
-            // PlayerController.ExecuteMove(selectedUnit, destination);
+                var playerController = GameObject.FindObjectOfType<Controllers.PlayerController>();
+                playerController.ExecuteMove(selectedUnit, destination);
             }
-             else
+            else
             {
-                Debug.Log($"Cannot move to occupied cell!");
-                
-                // Возвращаемся к выбору фигуры
+                Debug.Log("Cell occupied");
                 var battleController = GameObject.FindObjectOfType<Controllers.BattleController>();
                 battleController.CancelAction();
             }

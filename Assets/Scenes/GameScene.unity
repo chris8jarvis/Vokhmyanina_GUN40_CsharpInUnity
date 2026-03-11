@@ -6507,7 +6507,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b81dee790d19b8145a9c487e75c392c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  battleController: {fileID: 0}
+  battleController: {fileID: 1468938519}
 --- !u!4 &1787096827
 Transform:
   m_ObjectHideFlags: 0

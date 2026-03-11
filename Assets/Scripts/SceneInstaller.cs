@@ -29,7 +29,7 @@ public class SceneInstaller : MonoInstaller
         Container.Bind<Battlefield>()
                  .FromInstance(battlefield)
                  .AsSingle();
-        
+
         Debug.Log("SceneInstaller: All bindings registered");
     }
 }

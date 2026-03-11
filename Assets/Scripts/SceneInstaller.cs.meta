@@ -3,7 +3,11 @@ guid: 9b7b256796f47cc4e96eb1451b0dc12e
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - inputActions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  - battleController: {instanceID: 0}
+  - playerController: {instanceID: 0}
+  - battlefield: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
