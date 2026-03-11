@@ -18,6 +18,8 @@ public static class MoveValidator
         CheckDiagonal(currentPos.x - 1, currentPos.y + direction, unit, battlefield, availableMoves); //добавить attackMoves
         CheckDiagonal(currentPos.x + 1, currentPos.y + direction, unit, battlefield, availableMoves); //добавить attackMoves
 
+        Debug.Log($"Unit at Board {unit.CurrentCell.BoardPosition}, World {unit.transform.position}");
+
         foreach (var move in availableMoves)
         {
             Debug.Log($"Available move: {move.BoardPosition}");

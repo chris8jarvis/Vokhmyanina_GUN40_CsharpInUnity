@@ -14,17 +14,32 @@ namespace Commands
         
         public void Interact(Cell destination)
         {
-            if (destination.CurrentUnit == null)
+            var battlefield = GameObject.FindObjectOfType<Battlefield>();
+            var availableMoves = MoveValidator.GetAvailableMoves(selectedUnit, battlefield);
+
+            if (availableMoves.Contains(destination))
             {
                 var playerController = GameObject.FindObjectOfType<Controllers.PlayerController>();
                 playerController.ExecuteMove(selectedUnit, destination);
             }
             else
             {
-                Debug.Log("Cell occupied");
+                Debug.Log("Invalid move!");
                 var battleController = GameObject.FindObjectOfType<Controllers.BattleController>();
                 battleController.CancelAction();
             }
+
+            // if (destination.CurrentUnit == null)
+            // {
+            //     var playerController = GameObject.FindObjectOfType<Controllers.PlayerController>();
+            //     playerController.ExecuteMove(selectedUnit, destination);
+            // }
+            // else
+            // {
+            //     Debug.Log("Cell occupied");
+            //     var battleController = GameObject.FindObjectOfType<Controllers.BattleController>();
+            //     battleController.CancelAction();
+            // }
         }
     }
 }
