@@ -20,7 +20,6 @@ public class InputManager : MonoBehaviour
     
     private void OnEnable()
     {
-        // Подписываемся на события нажатия и отпускания
         controls.Game.Restart.performed += OnRestartPerformed;
         controls.Game.Restart.canceled += OnRestartCanceled;
         controls.Game.Enable();
@@ -32,7 +31,6 @@ public class InputManager : MonoBehaviour
     
     private void Start()
     {
-        // В начале игры панель выключена
         if (restartPanel != null)
             restartPanel.SetActive(false);
     }
@@ -41,14 +39,11 @@ public class InputManager : MonoBehaviour
     {
         if (isHoldingRestart)
         {
-            // Увеличиваем время удержания
             currentHoldTime += Time.deltaTime;
             
-            // Обновляем fillAmount (от 0 до 1)
             float fillAmount = currentHoldTime / restartHoldTime;
             restartFillImage.fillAmount = Mathf.Clamp01(fillAmount);
             
-            // Проверяем, заполнилась ли шкала
             if (currentHoldTime >= restartHoldTime)
             {
                 RestartScene();
@@ -58,11 +53,9 @@ public class InputManager : MonoBehaviour
     
     private void OnRestartPerformed(UnityEngine.InputSystem.InputAction.CallbackContext context)
     {
-        // Начали удерживать кнопку
         isHoldingRestart = true;
         currentHoldTime = 0f;
         
-        // Включаем панель
         if (restartPanel != null)
         {
             restartPanel.SetActive(true);
@@ -72,11 +65,9 @@ public class InputManager : MonoBehaviour
     
     private void OnRestartCanceled(UnityEngine.InputSystem.InputAction.CallbackContext context)
     {
-        // Отпустили кнопку раньше времени
         isHoldingRestart = false;
         currentHoldTime = 0f;
         
-        // Выключаем панель
         if (restartPanel != null)
         {
             restartPanel.SetActive(false);
@@ -85,11 +76,9 @@ public class InputManager : MonoBehaviour
     
     private void RestartScene()
     {
-        // Сброс состояния
         isHoldingRestart = false;
         currentHoldTime = 0f;
         
-        // Перезагрузка текущей сцены
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
