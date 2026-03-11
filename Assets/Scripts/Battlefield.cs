@@ -14,6 +14,12 @@ public class Battlefield : MonoBehaviour
     {
         FindAllCells();
         AssignBoardPositions();
+
+        foreach (Cell cell in allCells)
+        {
+            Debug.Log($"Cell at world {cell.transform.position} has BoardPosition {cell.BoardPosition}");
+        }
+
         FindAllUnits();
         SetupCellNeighbours();
         SetupCellClickEvents();
