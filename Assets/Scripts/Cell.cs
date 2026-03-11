@@ -9,8 +9,8 @@ public class Cell : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     [SerializeField] private GameObject focusMesh;
     [SerializeField] private GameObject selectMesh;
 
-    [SerializeField] private NeighbourType neighbourType; // Тип соседства
-    [SerializeField] private Unit currentUnit; // Юнит, стоящий на клетке
+    [SerializeField] private NeighbourType neighbourType;
+    [SerializeField] private Unit currentUnit;
 
     [SerializeField] private BattleController battleController;
 
