@@ -13,6 +13,7 @@ public class Battlefield : MonoBehaviour
     private void Start()
     {
         FindAllCells();
+        AssignBoardPositions();
         FindAllUnits();
         SetupCellNeighbours();
         SetupCellClickEvents();
@@ -23,6 +24,26 @@ public class Battlefield : MonoBehaviour
     {
         allCells = FindObjectsOfType<Cell>().ToList();
         Debug.Log($"Found {allCells.Count} cells on scene");
+    }
+
+    private void AssignBoardPositions()
+    {
+        var sortedCells = allCells.OrderBy(c => c.transform.position.z).ThenBy(c => c.transform.position.x).ToList();
+    
+        int index = 0;
+        for (int y = 0; y < 8; y++)
+        {
+            for (int x = 0; x < 8; x++)
+            {
+                if (index < sortedCells.Count)
+                {
+                    sortedCells[index].BoardPosition = new Vector2Int(x, y);
+                    index++;
+                }
+            }
+        }
+    
+            Debug.Log("Board positions assigned to cells");
     }
     
     private void FindAllUnits()
