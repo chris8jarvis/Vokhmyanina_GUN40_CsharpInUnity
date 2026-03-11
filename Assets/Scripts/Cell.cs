@@ -15,7 +15,6 @@ public class Cell : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     [SerializeField] private BattleController battleController;
 
     public Vector2Int BoardPosition { get; set; }
-    //public event Action<Cell> OnPointerClickEvent;
 
      public NeighbourType NeighbourType 
     { 
@@ -43,8 +42,6 @@ public class Cell : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         Debug.Log($"Cell clicked at position: {BoardPosition}");
         if (battleController != null)
             battleController.ProcessClick(this);
-
-        //OnPointerClickEvent?.Invoke(this);
     }
 
     public void SetSelect(Material material)

@@ -23,7 +23,6 @@ namespace Controllers
 
         private void Awake()
         {
-            // Находим UI Action Map
             uiActionMap = inputActions.FindActionMap("UI");
             cancelAction = uiActionMap.FindAction("Cancel");
             submitAction = uiActionMap.FindAction("Submit");
@@ -58,13 +57,11 @@ namespace Controllers
 
         private void OnSubmit(InputAction.CallbackContext context)
         {
-            // TODO: Подтверждение действия (когда будет реализовано)
             Debug.Log("Submit pressed");
         }
 
         public void CancelAction()
         {
-            // Сброс выбора (по ESC)
             selectedUnit = null;
             currentCommand = null;
             currentState = GameState.SelectUnit;
@@ -78,10 +75,8 @@ namespace Controllers
             {
                 currentCommand.Interact(cell);
                 
-                // После выполнения MoveCommand возвращаемся к выбору фигуры
                 if (currentState == GameState.SelectDestination)
                 {
-                // Сбрасываем состояние
                     currentState = GameState.SelectUnit;
                     currentCommand = null;
                     selectedUnit = null;

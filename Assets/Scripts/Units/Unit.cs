@@ -13,7 +13,6 @@ namespace Units
 
         [SerializeField] private Controllers.BattleController battleController;
 
-        //[SerializeField] private BattleController battleController;
         
         private Cell currentCell;
         private bool isMoving = false;
@@ -111,14 +110,8 @@ namespace Units
         
         public void OnPointerClick(PointerEventData eventData)
         {
-            //Debug.Log($"Unit clicked: {Owner} {Type} at {CurrentCell.BoardPosition}");
             if (battleController != null)
                 battleController.ProcessClick(this);
-            
-            // if (currentCell != null)
-            // {
-            //     currentCell.OnPointerClick(eventData);
-            // }
         }
         
         public void Move(Cell cell)
@@ -128,6 +121,17 @@ namespace Units
             targetCell = cell;
             targetPosition = cell.transform.position + Vector3.up;
             isMoving = true;
+        }
+
+        public void Teleport(Cell cell)
+        {
+            isMoving = false;
+    
+            targetCell = cell;
+            targetPosition = cell.transform.position;
+            targetPosition.y = 0.5f;
+            transform.position = targetPosition;
+            currentCell = cell;
         }
     }
 }

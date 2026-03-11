@@ -5,7 +5,7 @@ using Units;
 
 public class Battlefield : MonoBehaviour
 {
-    public event System.Action<Cell> OnCellClicked; // Событие для клика по клетке
+    public event System.Action<Cell> OnCellClicked;
     
     private List<Cell> allCells = new List<Cell>();
     private List<Unit> allUnits = new List<Unit>();
@@ -41,7 +41,6 @@ public class Battlefield : MonoBehaviour
         }
     }
     
-    // Проверка соседей для конкретной клетки
     private NeighbourType CheckNeighbours(Cell cell)
     {
         NeighbourType result = NeighbourType.None;

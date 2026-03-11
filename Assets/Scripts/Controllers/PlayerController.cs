@@ -13,23 +13,9 @@ namespace Controllers
         
         public async void ExecuteMove(Unit unit, Cell destination)
         {
-            if (unit == null)
+             if (unit == null || destination == null)
             {
-                Debug.LogError("ExecuteMove: unit is NULL!");
-                isExecuting = false;
-                return;
-            }
-
-            if (destination == null)
-            {
-                Debug.LogError($"ExecuteMove: destination is NULL for unit {unit.name}!");
-                isExecuting = false;
-                return;
-            }
-
-            if (destination.transform == null)
-            {
-                Debug.LogError($"ExecuteMove: destination.transform is NULL for cell {destination.name}!");
+                Debug.LogError("ExecuteMove: unit or destination is NULL!");
                 isExecuting = false;
                 return;
             }
@@ -38,16 +24,8 @@ namespace Controllers
             
             Debug.Log($"Visualizing move: {unit.name} to {destination.name}");
 
-            if (battleController == null)
-            {
-                Debug.LogError("ExecuteMove: battleController is NULL! Assign in Inspector!");
-                isExecuting = false;
-                return;
-            }
             
-            Vector3 newPosition = destination.transform.position;
-            newPosition.y += 0.5f;
-            unit.transform.position = newPosition;
+            unit.Teleport(destination);
             
             if (unit.CurrentCell != null)
                 unit.CurrentCell.CurrentUnit = null;
