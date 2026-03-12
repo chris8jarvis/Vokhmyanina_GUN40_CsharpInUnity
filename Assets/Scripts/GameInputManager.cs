@@ -25,6 +25,5 @@ public class GameInputManager : MonoBehaviour
     private void OnRestartPerformed(InputAction.CallbackContext context)
     {
         Debug.Log("Restart pressed!");
-        //
     }
 }

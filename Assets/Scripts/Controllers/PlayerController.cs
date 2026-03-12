@@ -22,7 +22,7 @@ namespace Controllers
 
             isExecuting = true;
             
-            Debug.Log($"Visualizing move: {unit.name} to {destination.name}");
+            //Debug.Log($"Visualizing move: {unit.name} to {destination.name}");
 
             Unit enemyKilled = MoveValidator.GetAttackTarget(destination); //проверка на атаку
 

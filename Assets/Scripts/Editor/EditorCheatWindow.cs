@@ -54,16 +54,8 @@ public class EditorCheatWindow : EditorWindow
         var battlefield = FindAnyObjectByType<Battlefield>();
         if (battlefield != null)
         {
-        // Например, cellManager.NextTurn();
             Debug.Log("Found Battlefield, next turn could be made");
         }
-        // TODO: Найти ISharedData и передать ход
-        // var sharedData = FindAnyObjectByType<MonoBehaviour>(FindObjectsInactive.Include) as ISharedData;
-        // if (sharedData != null)
-        // {
-        //     // Здесь будет вызов метода смены хода
-        //     // Например: sharedData.NextTurn();
-        // }
     }
     
     private void OnKillPerformed(InputAction.CallbackContext obj)
@@ -78,16 +70,6 @@ public class EditorCheatWindow : EditorWindow
             Destroy(unit.gameObject);
             Debug.Log("Unit destroyed");
         }
-        // TODO: Найти выбранную вражескую фишку и убить
-        // var sharedData = FindAnyObjectByType<MonoBehaviour>(FindObjectsInactive.Include);
-        // if (sharedData != null)
-        // {
-        //     // Через рефлексию вызываем метод убийства
-        //     var type = sharedData.GetType();
-        //     var method = type.GetMethod("KillSelectedEnemy", 
-        //         System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
-        //     method?.Invoke(sharedData, null);
-        // }
     }
     
     private void OnGUI()

@@ -14,7 +14,7 @@ namespace Commands
             if (cell.CurrentUnit != null)
             {
                 selectedUnit = cell.CurrentUnit;
-                Debug.Log($"Selected {selectedUnit.Player} at {cell.BoardPosition}");
+                //Debug.Log($"Selected {selectedUnit.Player} at {cell.BoardPosition}");
 
                 var battlefield = GameObject.FindObjectOfType<Battlefield>();
                 var moves = MoveValidator.GetAvailableMoves(selectedUnit, battlefield);

@@ -28,18 +28,6 @@ namespace Commands
                 var battleController = GameObject.FindObjectOfType<Controllers.BattleController>();
                 battleController.CancelAction();
             }
-
-            // if (destination.CurrentUnit == null)
-            // {
-            //     var playerController = GameObject.FindObjectOfType<Controllers.PlayerController>();
-            //     playerController.ExecuteMove(selectedUnit, destination);
-            // }
-            // else
-            // {
-            //     Debug.Log("Cell occupied");
-            //     var battleController = GameObject.FindObjectOfType<Controllers.BattleController>();
-            //     battleController.CancelAction();
-            // }
         }
     }
 }
