@@ -23,7 +23,7 @@ public class Battlefield : MonoBehaviour
     private void FindAllCells()
     {
         allCells = FindObjectsOfType<Cell>().ToList();
-        Debug.Log($"Found {allCells.Count} cells on scene");
+        //Debug.Log($"Found {allCells.Count} cells on scene");
     }
 
     private void AssignBoardPositions()
@@ -43,13 +43,13 @@ public class Battlefield : MonoBehaviour
             }
         }
     
-            Debug.Log("Board positions assigned to cells");
+            //Debug.Log("Board positions assigned to cells");
     }
     
     private void FindAllUnits()
     {
         allUnits = FindObjectsOfType<Unit>().ToList();
-        Debug.Log($"Found {allUnits.Count} units on scene");
+        //Debug.Log($"Found {allUnits.Count} units on scene");
     }
     
     private void SetupCellNeighbours()
@@ -58,7 +58,7 @@ public class Battlefield : MonoBehaviour
         {
             NeighbourType neighbours = CheckNeighbours(cell);
             cell.NeighbourType = neighbours;
-            Debug.Log($"Cell {cell.name} neighbours: {neighbours}");
+            //Debug.Log($"Cell {cell.name} neighbours: {neighbours}");
         }
     }
     
@@ -122,7 +122,7 @@ public class Battlefield : MonoBehaviour
             {
                 unit.CurrentCell = cellUnderUnit;
                 cellUnderUnit.CurrentUnit = unit;
-                Debug.Log($"Unit {unit.name} stands on cell {cellUnderUnit.name}");
+                //Debug.Log($"Unit {unit.name} stands on cell {cellUnderUnit.name}");
             }
             else
             {
