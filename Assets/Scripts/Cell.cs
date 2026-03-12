@@ -39,7 +39,7 @@ public class Cell : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        //Debug.Log($"Cell clicked at position: {BoardPosition}");
+        Debug.Log($"Cell clicked at position: {BoardPosition}");
         if (battleController != null)
             battleController.ProcessClick(this);
     }
