@@ -24,7 +24,7 @@ namespace Controllers
             
             Debug.Log($"Visualizing move: {unit.name} to {destination.name}");
 
-            //Unit enemyKilled = CheckForAttack(unit, destination); //проверка на атаку
+            Unit enemyKilled = MoveValidator.GetAttackTarget(destination); //проверка на атаку
 
             unit.Teleport(destination);
             
@@ -34,12 +34,12 @@ namespace Controllers
             unit.CurrentCell = destination;
             destination.CurrentUnit = unit;
 
-            //удаляем врага если враг
-            // if (enemyKilled != null)
-            // {
-            //     Destroy(enemyKilled.gameObject);
-            //     Debug.Log($"Enemy killed!");
-            // }
+            //удаляем юнит врага если это враг
+             if (enemyKilled != null)
+            {
+                Destroy(enemyKilled.gameObject);
+                Debug.Log($"Enemy killed!");
+            }
 
             if (!unit.IsKing)
             {
@@ -65,24 +65,5 @@ namespace Controllers
             
             Debug.Log($"{battleController.currentPlayer} turn");
         }
-        //проверка атаки
-        // private Unit CheckForAttack(Unit unit, Cell destination)
-        // {
-        //     Vector2Int from = unit.CurrentCell.BoardPosition;
-        //     Vector2Int to = destination.BoardPosition;
-            
-        //     if (Mathf.Abs(to.x - from.x) > 1)
-        //     {
-        //         int middleX = (from.x + to.x) / 2;
-        //         int middleY = (from.y + to.y) / 2;
-                
-        //         Cell middleCell = FindObjectOfType<Battlefield>().GetCellAtPosition(middleX, middleY);
-        //         if (middleCell != null && middleCell.CurrentUnit != null && middleCell.CurrentUnit.Player != unit.Player)
-        //         {
-        //             return middleCell.CurrentUnit;
-        //         }
-        //     }
-        //     return null;
-        // }
     }
 }
