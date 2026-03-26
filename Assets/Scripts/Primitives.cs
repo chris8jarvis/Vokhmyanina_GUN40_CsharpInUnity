@@ -1,14 +1,11 @@
-using UnityEngine;
+using System;
 public enum NeighbourType
 {
-    None = 0,           // Нет соседей (одиночная клетка)
-    Left = 1,           // Слева есть клетка
-    Right = 2,          // Справа есть клетка
-    Top = 3,            // Сверху есть клетка
-    Bottom = 4,         // Снизу есть клетка
-    LeftRight = 5,      // Слева и справа
-    TopBottom = 6,      // Сверху и снизу
-    Cross = 7,          // Все четыре стороны
+    None   = 0,
+    Left   = 1 << 0,
+    Right  = 1 << 1,
+    Top    = 1 << 2,
+    Bottom = 1 << 3,
 }
 
 public enum Player
@@ -17,15 +14,10 @@ public enum Player
     Black
 }
 
-public enum UnitType
-{
-    Man,    // Простая шашка
-    King    // Дамка
-}
-
 public enum GameState
 {
     SelectUnit,
     SelectDestination,
+    AttackChain,
     EnemyTurn
 }
