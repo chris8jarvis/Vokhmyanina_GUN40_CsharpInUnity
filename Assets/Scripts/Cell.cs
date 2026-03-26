@@ -1,7 +1,7 @@
 using UnityEngine.EventSystems;
 using UnityEngine;
 using Controllers;
-using System;
+using Zenject;
 using Units;
 
 public class Cell : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
@@ -12,7 +12,13 @@ public class Cell : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     [SerializeField] private NeighbourType neighbourType;
     [SerializeField] private Unit currentUnit;
 
-    [SerializeField] private BattleController battleController;
+    private BattleController m_battleController;
+
+    [Inject]
+    public void Construct(BattleController battleController)
+    {
+        m_battleController = battleController;
+    }
 
     public Vector2Int BoardPosition { get; set; }
 
@@ -40,17 +46,17 @@ public class Cell : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     public void OnPointerClick(PointerEventData eventData)
     {
         Debug.Log($"Cell clicked at position: {BoardPosition}");
-        if (battleController != null)
-            battleController.ProcessClick(this);
+        if (m_battleController != null)
+            m_battleController.ProcessClick(this);
     }
 
     public void SetSelect(Material material)
     {
         selectMesh.SetActive(true);
-        var renderer = selectMesh.GetComponent<MeshRenderer>();
-        if (renderer != null)
+        var meshRenderer = selectMesh.GetComponent<MeshRenderer>();
+        if (meshRenderer != null)
         {
-            renderer.material = material;
+            meshRenderer.material = material;
         }
     }
 

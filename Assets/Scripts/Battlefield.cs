@@ -2,33 +2,105 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 using Units;
+using Zenject;
 
 public class Battlefield : MonoBehaviour
 {
+    private CellPaletteSettings palette;
     public event System.Action<Cell> OnCellClicked;
     
     private List<Cell> allCells = new List<Cell>();
     private List<Unit> allUnits = new List<Unit>();
+    private Dictionary<Vector2Int, Cell> cellMap = new Dictionary<Vector2Int, Cell>();
+
+    private List<Cell> highlightedCells = new List<Cell>();
+
+    private Unit highlightedUnit;
+
+    [Inject]
+    public void Construct(CellPaletteSettings paletteSettings)
+    {
+        palette = paletteSettings;
+    }
     
     private void Start()
     {
         FindAllCells();
         AssignBoardPositions();
+        BuildCellMap();
         FindAllUnits();
         SetupCellNeighbours();
-        SetupCellClickEvents();
         SetupUnitCellRelations();
     }
+
+    //подсветка
+    public void HighlightMoves(List<Cell> moves, Dictionary<Cell, Unit> attackTargets)
+    {
+        foreach (var cell in moves)
+        {
+            bool isAttack = attackTargets != null && attackTargets.ContainsKey(cell);
+            Material mat = isAttack ? palette.attackMaterial : palette.availableMaterial;
+            cell.SetSelect(mat);
+            highlightedCells.Add(cell);
+        }
+    }
     
+    /// Подсвечивает выбранную фишку: клетку и юнита на ней.
+    public void HighlightSelected(Cell cell)
+    {
+        cell.SetSelect(palette.selectedMaterial);
+        if (!highlightedCells.Contains(cell))
+            highlightedCells.Add(cell);
+
+        // Подсвечиваем самого юнита
+        if (cell.CurrentUnit != null)
+        {
+            var mat = palette.unitSelectedMaterial != null
+                ? palette.unitSelectedMaterial
+                : palette.selectedMaterial;
+            cell.CurrentUnit.SetHighlight(mat);
+            highlightedUnit = cell.CurrentUnit;
+        }
+    }
+
+    /// Убирает всю подсветку.
+    public void ClearHighlights()
+    {
+        foreach (var cell in highlightedCells)
+            cell.ResetSelect();
+        highlightedCells.Clear();
+
+        // Сбрасываем подсветку юнита
+        if (highlightedUnit != null)
+        {
+            highlightedUnit.ResetHighlight();
+            highlightedUnit = null;
+        }
+    }
+
+    // Юниты
+    public List<Unit> GetUnitsOfPlayer(Player player)
+    {
+        return allUnits.Where(u => u != null && u.Player == player).ToList();
+    }
+
+    public void RemoveUnit(Unit unit)
+    {
+        allUnits.Remove(unit);
+    }
+
+
     private void FindAllCells()
     {
         allCells = FindObjectsOfType<Cell>().ToList();
-        //Debug.Log($"Found {allCells.Count} cells on scene");
     }
 
     private void AssignBoardPositions()
     {
-        var sortedCells = allCells.OrderBy(c => c.transform.position.z).ThenBy(c => c.transform.position.x).ToList();
+        var sortedCells = allCells
+            .OrderBy(c => c.transform.position.z)
+            .ThenBy(c => c.transform.position.x)
+            .ToList();
     
         int index = 0;
         for (int y = 0; y < 8; y++)
@@ -42,30 +114,31 @@ public class Battlefield : MonoBehaviour
                 }
             }
         }
-    
-            //Debug.Log("Board positions assigned to cells");
     }
     
+    private void BuildCellMap()
+    {
+        cellMap.Clear();
+        foreach (var cell in allCells)
+            cellMap[cell.BoardPosition] = cell;
+    }
+
     private void FindAllUnits()
     {
         allUnits = FindObjectsOfType<Unit>().ToList();
-        //Debug.Log($"Found {allUnits.Count} units on scene");
     }
     
     private void SetupCellNeighbours()
     {
         foreach (Cell cell in allCells)
         {
-            NeighbourType neighbours = CheckNeighbours(cell);
-            cell.NeighbourType = neighbours;
-            //Debug.Log($"Cell {cell.name} neighbours: {neighbours}");
+            cell.NeighbourType = CheckNeighbours(cell);
         }
     }
     
     private NeighbourType CheckNeighbours(Cell cell)
     {
         NeighbourType result = NeighbourType.None;
-        
         Vector3 cellPos = cell.transform.position;
         float checkDistance = 1.1f; 
         
@@ -95,34 +168,16 @@ public class Battlefield : MonoBehaviour
         }
         return false;
     }
-    
-    
-    private void SetupCellClickEvents()
-    {
-        // foreach (Cell cell in allCells)
-        // {
-        //     cell.OnPointerClickEvent += OnCellClickedHandler;
-        // }
-    }
-    
-    private void OnCellClickedHandler(Cell cell)
-    {
-        Debug.Log($"Cell clicked: {cell.name}");
-        OnCellClicked?.Invoke(cell);
-    }
-    
-    
+
     private void SetupUnitCellRelations()
     {
         foreach (Unit unit in allUnits)
         {
             Cell cellUnderUnit = FindCellUnderUnit(unit);
-            
             if (cellUnderUnit != null)
             {
                 unit.CurrentCell = cellUnderUnit;
                 cellUnderUnit.CurrentUnit = unit;
-                //Debug.Log($"Unit {unit.name} stands on cell {cellUnderUnit.name}");
             }
             else
             {
@@ -139,7 +194,6 @@ public class Battlefield : MonoBehaviour
         foreach (var hit in hits)
         {
             if (hit.collider.gameObject == unit.gameObject) continue;
-            
             Cell cell = hit.collider.GetComponent<Cell>();
             if (cell != null)
                 return cell;
@@ -150,12 +204,8 @@ public class Battlefield : MonoBehaviour
 
     public Cell GetCellAtPosition(int x, int y)
     {
-        foreach (Cell cell in allCells)
-        {
-            if (cell.BoardPosition.x == x && cell.BoardPosition.y == y)
-            return cell;
-        }
-        return null;
+        cellMap.TryGetValue(new Vector2Int(x, y), out Cell cell);
+        return cell;
     }
 
 }
