@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Units;
 using UnityEngine;
 
 namespace Commands
 {
     public interface IGameplayCommand
     {
-        void Interact(Cell cell);
+        CommandType Type { get; }
+        bool TryInteract(Cell cell, Unit selectedUnit);
     }
 }

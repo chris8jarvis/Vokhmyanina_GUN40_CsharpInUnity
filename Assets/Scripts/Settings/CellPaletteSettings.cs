@@ -7,5 +7,7 @@ public class CellPaletteSettings : ScriptableObject
     public Material selectedMaterial;
     public Material availableMaterial;
     public Material attackMaterial;
-    public Material availableAndAttackMaterial;
+    
+    [Header("Unit Selection Material")]
+    public Material unitSelectedMaterial;
 }

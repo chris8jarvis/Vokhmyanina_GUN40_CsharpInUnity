@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Units;
@@ -7,23 +6,27 @@ namespace Commands
 {
     public class SelectCommand : IGameplayCommand
     {
-        private Unit selectedUnit;
+        private readonly Battlefield m_battlefield;
         
-        public void Interact(Cell cell)
+        public CommandType Type => CommandType.Select;
+        
+        public SelectCommand(Battlefield battlefield)
         {
-            if (cell.CurrentUnit != null)
-            {
-                selectedUnit = cell.CurrentUnit;
-                //Debug.Log($"Selected {selectedUnit.Player} at {cell.BoardPosition}");
+            m_battlefield = battlefield;
+        }
 
-                var battlefield = GameObject.FindObjectOfType<Battlefield>();
-                var moves = MoveValidator.GetAvailableMoves(selectedUnit, battlefield);
-                Debug.Log($"Available moves: {moves.Count}");
-            }
-            else
-            {
-                Debug.Log("Empty cell clicked");
-            }
+        public bool TryInteract(Cell cell, Unit selectedUnit)
+        {
+            if (selectedUnit == null) return false;
+
+            var moves = MoveValidator.GetAvailableMoves(selectedUnit, m_battlefield,
+                out Dictionary<Cell, Unit> attackTargets);
+
+            m_battlefield.HighlightSelected(selectedUnit.CurrentCell);
+            m_battlefield.HighlightMoves(moves, attackTargets);
+
+            Debug.Log($"Selected {selectedUnit.name}. Moves: {moves.Count}");
+            return true;
         }
     }
 }
