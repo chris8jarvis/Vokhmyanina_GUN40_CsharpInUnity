@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _radius: 2.23
-  _viewangle: 249
+  _viewangle: 325
   _player: {fileID: 1231404024}
   _targetMask:
     serializedVersion: 2
@@ -644,8 +644,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea02502f286ad684dbb86a6ca3ef178d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _radius: -2.9
-  _viewangle: 237
+  _radius: 1.7
+  _viewangle: 132
   _player: {fileID: 1231404024}
   _targetMask:
     serializedVersion: 2
