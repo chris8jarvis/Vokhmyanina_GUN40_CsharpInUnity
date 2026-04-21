@@ -6,7 +6,7 @@ using UnityEngine;
 [CustomEditor(typeof(FieldOfView))]
 public class FieldOfViewEdit : Editor
 {
-    private void OceneGUI()
+    private void OnSceneGUI()
     {
         FieldOfView fov =  (FieldOfView) target;
         Handles.color = Color.white;
