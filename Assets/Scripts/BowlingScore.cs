@@ -4,8 +4,7 @@ using System.Collections.Generic;
 
 public class BowlingScore : MonoBehaviour
 {
-    public Text scoreText;
-    public Text frameInfoText;
+    public Text scoreText;  // Только счёт
     public Pin[] pins;
     
     private Vector3[] initialPinPositions;
@@ -16,12 +15,10 @@ public class BowlingScore : MonoBehaviour
     private int currentFrame = 1;
     private int throwNumber = 1; 
     private int pinsDownThisFrame = 0;
+    private int pinsDownFirstThrow = 0;
     private bool waitingForBonus = false;
     private int bonusRemaining = 0;
     private int bonusScore = 0;
-    
-    private Dictionary<int, int> frameScores = new Dictionary<int, int>();
-    private Dictionary<int, string> frameTypes = new Dictionary<int, string>();
 
     void Start()
     {
@@ -55,31 +52,24 @@ public class BowlingScore : MonoBehaviour
         
         if (throwNumber == 1)
         {
+            pinsDownFirstThrow = pinsThisThrow;
+            
             if (pinsThisThrow == 10) // STRIKE
             {
-                frameTypes[currentFrame] = "Strike";
-                bonusRemaining = 2;
-                waitingForBonus = true;
                 currentScore += 10;
                 EndFrame();
             }
             else
             {
-                frameTypes[currentFrame] = "Normal";
                 throwNumber = 2;
-                frameScores[currentFrame] = pinsThisThrow;
             }
         }
-        else 
+        else // Второй бросок
         {
-            int previousThrow = frameScores.ContainsKey(currentFrame) ? frameScores[currentFrame] : 0;
-            int totalInFrame = pinsThisThrow + previousThrow;
+            int totalInFrame = pinsThisThrow + pinsDownFirstThrow;
             
             if (totalInFrame == 10) // SPARE
             {
-                frameTypes[currentFrame] = "Spare";
-                bonusRemaining = 1;
-                waitingForBonus = true;
                 currentScore += 10;
             }
             else
@@ -89,6 +79,7 @@ public class BowlingScore : MonoBehaviour
             EndFrame();
         }
         
+        ResetPins();
         UpdateUI();
     }
     
@@ -97,10 +88,11 @@ public class BowlingScore : MonoBehaviour
         currentFrame++;
         throwNumber = 1;
         pinsDownThisFrame = 0;
+        pinsDownFirstThrow = 0;
         
         if (currentFrame > 10)
         {
-            frameInfoText.text = "Game Over! Final Score: " + currentScore;
+            scoreText.text = $"Final Score: {currentScore}";
         }
     }
     
@@ -120,7 +112,7 @@ public class BowlingScore : MonoBehaviour
         UpdateUI();
     }
     
-    public void ResetPins()
+    void ResetPins()
     {
         for (int i = 0; i < pins.Length; i++)
         {
@@ -131,7 +123,6 @@ public class BowlingScore : MonoBehaviour
             {
                 pinRigidbodies[i].velocity = Vector3.zero;
                 pinRigidbodies[i].angularVelocity = Vector3.zero;
-                pinRigidbodies[i].isKinematic = false;
             }
             
             Pin pinScript = pins[i].GetComponent<Pin>();
@@ -145,9 +136,9 @@ public class BowlingScore : MonoBehaviour
     
     void UpdateUI()
     {
-        scoreText.text = $"Score: {currentScore}\nFrame: {currentFrame}\nThrow: {throwNumber}\nPins down: {pinsDownThisFrame}";
-        
-        if (frameTypes.ContainsKey(currentFrame))
-            frameInfoText.text = $"Frame {currentFrame}: {frameTypes[currentFrame]}";
+        if (scoreText != null)
+        {
+            scoreText.text = $"Score: {currentScore}";
+        }
     }
 }
