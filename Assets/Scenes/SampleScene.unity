@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 178326492}
   - component: {fileID: 178326495}
   - component: {fileID: 178326496}
+  - component: {fileID: 178326497}
   m_Layer: 0
   m_Name: Pin2
   m_TagString: Untagged
@@ -152,7 +153,7 @@ Transform:
   m_GameObject: {fileID: 178326490}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.9565868, y: 0.8, z: 1.7141733}
+  m_LocalPosition: {x: -1.9565868, y: 0.80999976, z: 1.7141733}
   m_LocalScale: {x: 0.3437231, y: 0.8290094, z: 0.421285}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -175,7 +176,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -239,9 +240,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 178326490}
   serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0.2
-  m_AngularDrag: 0.05
+  m_Mass: 2
+  m_Drag: 1
+  m_AngularDrag: 0.3
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -273,6 +274,27 @@ MonoBehaviour:
   onPinFall:
     m_PersistentCalls:
       m_Calls: []
+--- !u!65 &178326497
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178326490}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.0000001, y: 2, z: 1.0000001}
+  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940696}
 --- !u!1 &200222063
 GameObject:
   m_ObjectHideFlags: 0
@@ -392,6 +414,7 @@ GameObject:
   - component: {fileID: 305884854}
   - component: {fileID: 305884857}
   - component: {fileID: 305884858}
+  - component: {fileID: 305884859}
   m_Layer: 0
   m_Name: Pin6
   m_TagString: Untagged
@@ -408,7 +431,7 @@ Transform:
   m_GameObject: {fileID: 305884852}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.17, y: 0.8000002, z: 1.7141733}
+  m_LocalPosition: {x: -0.17, y: 0.80999994, z: 1.7141733}
   m_LocalScale: {x: 0.3437231, y: 0.8290094, z: 0.421285}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -431,7 +454,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -495,9 +518,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 305884852}
   serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0.2
-  m_AngularDrag: 0.05
+  m_Mass: 2
+  m_Drag: 1
+  m_AngularDrag: 0.3
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -529,6 +552,27 @@ MonoBehaviour:
   onPinFall:
     m_PersistentCalls:
       m_Calls: []
+--- !u!65 &305884859
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 305884852}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.0000001, y: 2, z: 1.0000001}
+  m_Center: {x: 0.0000019669533, y: -0.00000047683716, z: -0.00000008940696}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -798,6 +842,7 @@ GameObject:
   - component: {fileID: 538500655}
   - component: {fileID: 538500658}
   - component: {fileID: 538500659}
+  - component: {fileID: 538500660}
   m_Layer: 0
   m_Name: Pin8
   m_TagString: Untagged
@@ -814,7 +859,7 @@ Transform:
   m_GameObject: {fileID: 538500653}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.64, y: 0.8000002, z: 1.7141733}
+  m_LocalPosition: {x: 0.64, y: 0.80999994, z: 1.7141733}
   m_LocalScale: {x: 0.3437231, y: 0.8290094, z: 0.421285}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -837,7 +882,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -901,9 +946,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 538500653}
   serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0.2
-  m_AngularDrag: 0.05
+  m_Mass: 2
+  m_Drag: 1
+  m_AngularDrag: 0.3
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -935,6 +980,27 @@ MonoBehaviour:
   onPinFall:
     m_PersistentCalls:
       m_Calls: []
+--- !u!65 &538500660
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 538500653}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.0000001, y: 2, z: 1.0000001}
+  m_Center: {x: 0.0000019669533, y: -0.00000047683716, z: -0.00000008940696}
 --- !u!1 &591678638
 GameObject:
   m_ObjectHideFlags: 0
@@ -949,6 +1015,7 @@ GameObject:
   - component: {fileID: 591678640}
   - component: {fileID: 591678643}
   - component: {fileID: 591678644}
+  - component: {fileID: 591678645}
   m_Layer: 0
   m_Name: Pin3
   m_TagString: Untagged
@@ -965,7 +1032,7 @@ Transform:
   m_GameObject: {fileID: 591678638}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.5, y: 0.8000002, z: 1.7141733}
+  m_LocalPosition: {x: -1.5, y: 0.80999994, z: 1.7141733}
   m_LocalScale: {x: 0.3437231, y: 0.8290094, z: 0.421285}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -988,7 +1055,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -1052,9 +1119,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 591678638}
   serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0.2
-  m_AngularDrag: 0.05
+  m_Mass: 2
+  m_Drag: 1
+  m_AngularDrag: 0.3
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -1086,6 +1153,27 @@ MonoBehaviour:
   onPinFall:
     m_PersistentCalls:
       m_Calls: []
+--- !u!65 &591678645
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 591678638}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.0000001, y: 2, z: 1.0000001}
+  m_Center: {x: 0.000000059604645, y: -0.00000047683716, z: -0.00000008940696}
 --- !u!1 &686627910
 GameObject:
   m_ObjectHideFlags: 0
@@ -1284,6 +1372,7 @@ GameObject:
   - component: {fileID: 769703075}
   - component: {fileID: 769703078}
   - component: {fileID: 769703079}
+  - component: {fileID: 769703080}
   m_Layer: 0
   m_Name: Pin9
   m_TagString: Untagged
@@ -1300,7 +1389,7 @@ Transform:
   m_GameObject: {fileID: 769703073}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.04, y: 0.8000002, z: 1.7141733}
+  m_LocalPosition: {x: 1.04, y: 0.81, z: 1.7141733}
   m_LocalScale: {x: 0.3437231, y: 0.8290094, z: 0.421285}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1323,7 +1412,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -1387,9 +1476,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 769703073}
   serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0.2
-  m_AngularDrag: 0.05
+  m_Mass: 2
+  m_Drag: 1
+  m_AngularDrag: 0.3
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -1421,6 +1510,27 @@ MonoBehaviour:
   onPinFall:
     m_PersistentCalls:
       m_Calls: []
+--- !u!65 &769703080
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 769703073}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.0000001, y: 2, z: 1.0000001}
+  m_Center: {x: 0.000000059604645, y: -0.00000047683716, z: -0.00000008940696}
 --- !u!1 &825532131
 GameObject:
   m_ObjectHideFlags: 0
@@ -1600,7 +1710,7 @@ Transform:
   m_GameObject: {fileID: 857428199}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.2, y: 3.65, z: -17.25}
+  m_LocalPosition: {x: 8.2, y: 4.71, z: -17.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1620,6 +1730,7 @@ GameObject:
   - component: {fileID: 974577128}
   - component: {fileID: 974577131}
   - component: {fileID: 974577132}
+  - component: {fileID: 974577133}
   m_Layer: 0
   m_Name: Pin5
   m_TagString: Untagged
@@ -1636,7 +1747,7 @@ Transform:
   m_GameObject: {fileID: 974577126}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.6, y: 0.8000002, z: 1.7141733}
+  m_LocalPosition: {x: -0.6, y: 0.80999994, z: 1.7141733}
   m_LocalScale: {x: 0.3437231, y: 0.8290094, z: 0.421285}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1659,7 +1770,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -1723,9 +1834,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 974577126}
   serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0.2
-  m_AngularDrag: 0.05
+  m_Mass: 2
+  m_Drag: 1
+  m_AngularDrag: 0.3
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -1757,6 +1868,27 @@ MonoBehaviour:
   onPinFall:
     m_PersistentCalls:
       m_Calls: []
+--- !u!65 &974577133
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 974577126}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.0000001, y: 2, z: 1.0000001}
+  m_Center: {x: 0.0000019669533, y: -0.00000047683716, z: -0.00000008940696}
 --- !u!1 &1190087177
 GameObject:
   m_ObjectHideFlags: 0
@@ -1861,139 +1993,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &1232279264
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1232279269}
-  - component: {fileID: 1232279268}
-  - component: {fileID: 1232279267}
-  - component: {fileID: 1232279266}
-  - component: {fileID: 1232279265}
-  m_Layer: 0
-  m_Name: Ball
-  m_TagString: Ball
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!54 &1232279265
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1232279264}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0.5
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!135 &1232279266
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1232279264}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &1232279267
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1232279264}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1232279268
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1232279264}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1232279269
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1232279264}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.1, y: 4.74, z: -17.12}
-  m_LocalScale: {x: 0.66188097, y: 0.6815658, z: 0.67062837}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1280867054
 GameObject:
   m_ObjectHideFlags: 0
@@ -2049,9 +2048,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d296c5e7493d1224e98d3916a7e51752, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ball: {fileID: 1232279264}
+  ball: {fileID: 8767532154802125102, guid: b791a29d2a63fee428533f9c09e41692, type: 3}
   spawnPoint: {fileID: 857428200}
-  forceMultiplier: 15
+  forceMultiplier: 5
   maxDragDistance: 5
   scoreSystem: {fileID: 1280867055}
 --- !u!4 &1280867057
@@ -2083,6 +2082,7 @@ GameObject:
   - component: {fileID: 1287149334}
   - component: {fileID: 1287149337}
   - component: {fileID: 1287149338}
+  - component: {fileID: 1287149339}
   m_Layer: 0
   m_Name: Pin7
   m_TagString: Untagged
@@ -2099,7 +2099,7 @@ Transform:
   m_GameObject: {fileID: 1287149332}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.23, y: 0.8000002, z: 1.7141733}
+  m_LocalPosition: {x: 0.23, y: 0.80999994, z: 1.7141733}
   m_LocalScale: {x: 0.3437231, y: 0.8290094, z: 0.421285}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2122,7 +2122,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -2186,9 +2186,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1287149332}
   serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0.2
-  m_AngularDrag: 0.05
+  m_Mass: 2
+  m_Drag: 1
+  m_AngularDrag: 0.3
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -2220,6 +2220,27 @@ MonoBehaviour:
   onPinFall:
     m_PersistentCalls:
       m_Calls: []
+--- !u!65 &1287149339
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1287149332}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.0000001, y: 2, z: 1.0000001}
+  m_Center: {x: -0.000001847744, y: -0.00000047683716, z: -0.00000008940696}
 --- !u!1 &1553564991
 GameObject:
   m_ObjectHideFlags: 0
@@ -2234,6 +2255,7 @@ GameObject:
   - component: {fileID: 1553564993}
   - component: {fileID: 1553564996}
   - component: {fileID: 1553564997}
+  - component: {fileID: 1553564998}
   m_Layer: 0
   m_Name: Pin4
   m_TagString: Untagged
@@ -2250,7 +2272,7 @@ Transform:
   m_GameObject: {fileID: 1553564991}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.03, y: 0.8000002, z: 1.7141733}
+  m_LocalPosition: {x: -1.03, y: 0.80999994, z: 1.7141733}
   m_LocalScale: {x: 0.3437231, y: 0.8290094, z: 0.421285}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2273,7 +2295,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -2337,9 +2359,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1553564991}
   serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0.2
-  m_AngularDrag: 0.05
+  m_Mass: 2
+  m_Drag: 1
+  m_AngularDrag: 0.3
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -2371,6 +2393,27 @@ MonoBehaviour:
   onPinFall:
     m_PersistentCalls:
       m_Calls: []
+--- !u!65 &1553564998
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1553564991}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.0000001, y: 2, z: 1.0000001}
+  m_Center: {x: 0.0000019669533, y: -0.00000047683716, z: -0.00000008940696}
 --- !u!1 &1612794419
 GameObject:
   m_ObjectHideFlags: 0
@@ -2610,6 +2653,7 @@ GameObject:
   - component: {fileID: 1731669324}
   - component: {fileID: 1731669327}
   - component: {fileID: 1731669328}
+  - component: {fileID: 1731669329}
   m_Layer: 0
   m_Name: Pin10
   m_TagString: Untagged
@@ -2626,7 +2670,7 @@ Transform:
   m_GameObject: {fileID: 1731669322}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.45, y: 0.8000002, z: 1.7141733}
+  m_LocalPosition: {x: 1.45, y: 0.80999994, z: 1.7141733}
   m_LocalScale: {x: 0.3437231, y: 0.8290094, z: 0.421285}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2649,7 +2693,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -2713,9 +2757,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1731669322}
   serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0.2
-  m_AngularDrag: 0.05
+  m_Mass: 2
+  m_Drag: 1
+  m_AngularDrag: 0.3
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -2747,6 +2791,27 @@ MonoBehaviour:
   onPinFall:
     m_PersistentCalls:
       m_Calls: []
+--- !u!65 &1731669329
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1731669322}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.0000001, y: 2, z: 1.0000001}
+  m_Center: {x: 0.000000059604645, y: -0.00000047683716, z: -0.00000008940696}
 --- !u!1 &1885067758
 GameObject:
   m_ObjectHideFlags: 0
@@ -2908,6 +2973,7 @@ GameObject:
   - component: {fileID: 2034402394}
   - component: {fileID: 2034402397}
   - component: {fileID: 2034402398}
+  - component: {fileID: 2034402399}
   m_Layer: 0
   m_Name: Pin1
   m_TagString: Untagged
@@ -2924,7 +2990,7 @@ Transform:
   m_GameObject: {fileID: 2034402392}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.41, y: 0.85999995, z: 1.7141733}
+  m_LocalPosition: {x: -2.41, y: 0.86999977, z: 1.7141733}
   m_LocalScale: {x: 0.3437231, y: 0.80114645, z: 0.421285}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2947,9 +3013,9 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
-  m_Radius: 0.5000001
+  m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
@@ -3011,9 +3077,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2034402392}
   serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0.2
-  m_AngularDrag: 0.05
+  m_Mass: 2
+  m_Drag: 1
+  m_AngularDrag: 0.3
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -3045,6 +3111,27 @@ MonoBehaviour:
   onPinFall:
     m_PersistentCalls:
       m_Calls: []
+--- !u!65 &2034402399
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2034402392}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.0000001, y: 2, z: 1.0000001}
+  m_Center: {x: 0.000000059604645, y: 0.00000047683716, z: -0.00000008940696}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -3053,7 +3140,6 @@ SceneRoots:
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 1665516673}
-  - {fileID: 1232279269}
   - {fileID: 857428200}
   - {fileID: 1280867057}
   - {fileID: 1190087181}
