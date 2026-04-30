@@ -1,18 +1,19 @@
 using UnityEngine;
 
-public class ThrowBall : MonoBehaviour  
+public class ThrowBall : MonoBehaviour
 {
     public GameObject ball;           
     public Transform spawnPoint;      
     public float forceMultiplier = 15f;
     public float maxDragDistance = 5f;
-    public BowlingScore scoreSystem; 
+    public BowlingScore scoreSystem;
     
     private Vector3 dragStartPos;
     private bool isDragging = false;
     private GameObject currentBall;
     private LineRenderer lineRenderer;
     private bool ballMoving = false;
+    private bool waitingForReset = false;
 
     void Start()
     {
@@ -26,8 +27,7 @@ public class ThrowBall : MonoBehaviour
 
     void Update()
     {
-        if (currentBall == null) return;
-        
+        if (currentBall == null || waitingForReset) return;
         
         if (ballMoving)
         {
@@ -35,15 +35,18 @@ public class ThrowBall : MonoBehaviour
             if (rb.velocity.magnitude < 0.1f)
             {
                 ballMoving = false;
+                waitingForReset = true;
+                
                 if (scoreSystem != null)
                 {
-                    scoreSystem.EndThrow(); 
+                    scoreSystem.EndThrow();
                 }
-                Invoke("SpawnNewBall", 2f);
+                
+                Invoke("ResetAndSpawn", 2f);
             }
         }
         
-        if (Input.GetMouseButtonDown(0))
+        if (!ballMoving && !waitingForReset && Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -84,6 +87,12 @@ public class ThrowBall : MonoBehaviour
             
             ballMoving = true;
         }
+    }
+
+    void ResetAndSpawn()
+    {
+        waitingForReset = false;
+        SpawnNewBall();
     }
 
     void SpawnNewBall()

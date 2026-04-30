@@ -1,24 +1,25 @@
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections.Generic;
 
 public class BowlingScore : MonoBehaviour
 {
-    public Text scoreText;  // Только счёт
+    public Text scoreText;
     public Pin[] pins;
     
     private Vector3[] initialPinPositions;
     private Quaternion[] initialPinRotations;
     private Rigidbody[] pinRigidbodies;
     
-    private int currentScore = 0;
+    private int totalScore = 0;
     private int currentFrame = 1;
-    private int throwNumber = 1; 
-    private int pinsDownThisFrame = 0;
-    private int pinsDownFirstThrow = 0;
-    private bool waitingForBonus = false;
-    private int bonusRemaining = 0;
-    private int bonusScore = 0;
+    private int throwNumber = 1;
+    private int pinsDownThisThrow = 0;
+    private int pinsDownPreviousThrow = 0;
+    
+    private int[] throws = new int[21];
+    private int currentThrow = 0;
+    
+    private bool needResetPins = false;
 
     void Start()
     {
@@ -42,74 +43,86 @@ public class BowlingScore : MonoBehaviour
 
     void OnPinFall()
     {
-        pinsDownThisFrame++;
+        pinsDownThisThrow++;
         UpdateUI();
     }
 
     public void EndThrow()
     {
-        int pinsThisThrow = pinsDownThisFrame;
+        throws[currentThrow] = pinsDownThisThrow;
+        currentThrow++;
+        
+        CalculateTotalScore();
+        UpdateUI();
         
         if (throwNumber == 1)
         {
-            pinsDownFirstThrow = pinsThisThrow;
-            
-            if (pinsThisThrow == 10) // STRIKE
+            if (pinsDownThisThrow == 10) // STRIKE
             {
-                currentScore += 10;
-                EndFrame();
+                currentFrame++;
+                throwNumber = 1;
+                needResetPins = true;
             }
             else
             {
+                pinsDownPreviousThrow = pinsDownThisThrow;
                 throwNumber = 2;
+                needResetPins = false;
             }
         }
-        else // Второй бросок
+        else 
         {
-            int totalInFrame = pinsThisThrow + pinsDownFirstThrow;
-            
-            if (totalInFrame == 10) // SPARE
-            {
-                currentScore += 10;
-            }
-            else
-            {
-                currentScore += pinsThisThrow;
-            }
-            EndFrame();
+            currentFrame++;
+            throwNumber = 1;
+            needResetPins = true; 
         }
         
-        ResetPins();
-        UpdateUI();
-    }
-    
-    void EndFrame()
-    {
-        currentFrame++;
-        throwNumber = 1;
-        pinsDownThisFrame = 0;
-        pinsDownFirstThrow = 0;
+        if (needResetPins)
+        {
+            ResetPins();
+        }
+        
+        pinsDownThisThrow = 0;
         
         if (currentFrame > 10)
         {
-            scoreText.text = $"Final Score: {currentScore}";
+            scoreText.text = $"FINAL SCORE: {totalScore}";
         }
     }
     
-    public void ApplyBonus(int bonusPins)
+    void CalculateTotalScore()
     {
-        if (waitingForBonus && bonusRemaining > 0)
+        totalScore = 0;
+        int throwIndex = 0;
+        
+        for (int frame = 0; frame < 10; frame++)
         {
-            bonusScore += bonusPins;
-            bonusRemaining--;
-            if (bonusRemaining == 0)
+            if (throwIndex >= currentThrow) break;
+            
+            if (throws[throwIndex] == 10) // STRIKE
             {
-                currentScore += bonusScore;
-                bonusScore = 0;
-                waitingForBonus = false;
+                int bonus1 = (throwIndex + 1 < currentThrow) ? throws[throwIndex + 1] : 0;
+                int bonus2 = (throwIndex + 2 < currentThrow) ? throws[throwIndex + 2] : 0;
+                totalScore += 10 + bonus1 + bonus2;
+                throwIndex++;
+            }
+            else
+            {
+                int firstThrow = throws[throwIndex];
+                int secondThrow = (throwIndex + 1 < currentThrow) ? throws[throwIndex + 1] : 0;
+                
+                if (firstThrow + secondThrow == 10 && secondThrow > 0) // SPARE
+                {
+                    int bonus = (throwIndex + 2 < currentThrow) ? throws[throwIndex + 2] : 0;
+                    totalScore += 10 + bonus;
+                }
+                else
+                {
+                    totalScore += firstThrow + secondThrow;
+                }
+                throwIndex += 2;
             }
         }
-        UpdateUI();
     }
     
     void ResetPins()
@@ -129,16 +142,23 @@ public class BowlingScore : MonoBehaviour
             if (pinScript != null)
                 pinScript.ResetPin();
         }
-        
-        pinsDownThisFrame = 0;
-        UpdateUI();
+    }
+    
+    public bool CanThrowAgain()
+    {
+        return throwNumber == 2 && currentFrame <= 10;
     }
     
     void UpdateUI()
     {
         if (scoreText != null)
         {
-            scoreText.text = $"Score: {currentScore}";
+            string info = $"Score: {totalScore}\nFrame: {currentFrame}";
+            if (throwNumber == 1)
+                info += "\nThrow: 1";
+            else
+                info += $"\nThrow: 2 (first: {pinsDownPreviousThrow})";
+            scoreText.text = info;
         }
     }
 }
