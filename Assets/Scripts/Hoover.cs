@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Hoover : MonoBehaviour
+public class HooverWASD : MonoBehaviour
 {
     public float speed = 5f;
     public float rayDistance = 2f;
