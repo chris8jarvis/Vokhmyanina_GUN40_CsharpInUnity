@@ -27,7 +27,8 @@ public class ThrowBall : MonoBehaviour
 
     void Update()
     {
-        if (currentBall == null || waitingForReset) return;
+        if (currentBall == null) return;
+        if (waitingForReset) return;
         
         if (ballMoving)
         {
@@ -42,11 +43,11 @@ public class ThrowBall : MonoBehaviour
                     scoreSystem.EndThrow();
                 }
                 
-                Invoke("ResetAndSpawn", 2f);
+                Invoke("DestroyAndSpawn", 2f);
             }
         }
         
-        if (!ballMoving && !waitingForReset && Input.GetMouseButtonDown(0))
+        if (!ballMoving && Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -62,7 +63,7 @@ public class ThrowBall : MonoBehaviour
         {
             Vector3 currentPos = Input.mousePosition;
             Vector3 dragDelta = dragStartPos - currentPos;
-            dragDelta.z = dragDelta.y; 
+            dragDelta.z = dragDelta.y;
             Vector3 direction = new Vector3(dragDelta.x, 0, dragDelta.y).normalized;
             
             lineRenderer.positionCount = 2;
@@ -89,7 +90,7 @@ public class ThrowBall : MonoBehaviour
         }
     }
 
-    void ResetAndSpawn()
+    void DestroyAndSpawn()
     {
         waitingForReset = false;
         SpawnNewBall();

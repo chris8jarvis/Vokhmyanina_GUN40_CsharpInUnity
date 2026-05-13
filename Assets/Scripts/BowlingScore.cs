@@ -1,9 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class BowlingScore : MonoBehaviour
 {
-    public Text scoreText;
+    public Text scoreText;           
+    public Text currentThrowText; 
+    public Text frameStatusText; 
     public Pin[] pins;
     
     private Vector3[] initialPinPositions;
@@ -14,12 +17,15 @@ public class BowlingScore : MonoBehaviour
     private int currentFrame = 1;
     private int throwNumber = 1;
     private int pinsDownThisThrow = 0;
-    private int pinsDownPreviousThrow = 0;
+    private int pinsDownFirstThrow = 0;
     
     private int[] throws = new int[21];
     private int currentThrow = 0;
     
-    private bool needResetPins = false;
+    private bool isWaitingForReset = false;
+    private bool isFrameComplete = false;
+    
+    public System.Action OnRoundReady; // Событие готовности к следующему броску
 
     void Start()
     {
@@ -38,6 +44,7 @@ public class BowlingScore : MonoBehaviour
         {
             pin.onPinFall.AddListener(() => OnPinFall());
         }
+        
         UpdateUI();
     }
 
@@ -49,46 +56,115 @@ public class BowlingScore : MonoBehaviour
 
     public void EndThrow()
     {
+        if (isWaitingForReset) return;
+        
+        StartCoroutine(ShowThrowResult());
+    }
+    
+    IEnumerator ShowThrowResult()
+    {
+        isWaitingForReset = true;
+        
+        frameStatusText.text = $"Knocked down: {pinsDownThisThrow} pins";
+        frameStatusText.color = Color.yellow;
+        
+        yield return new WaitForSeconds(1.5f);
+        
         throws[currentThrow] = pinsDownThisThrow;
         currentThrow++;
         
-        CalculateTotalScore();
+        ProcessFrame();
+        
         UpdateUI();
         
-        if (throwNumber == 1)
+        yield return new WaitForSeconds(2f);
+        
+        if (isFrameComplete)
         {
-            if (pinsDownThisThrow == 10) // STRIKE
-            {
-                currentFrame++;
-                throwNumber = 1;
-                needResetPins = true;
-            }
-            else
-            {
-                pinsDownPreviousThrow = pinsDownThisThrow;
-                throwNumber = 2;
-                needResetPins = false;
-            }
+            frameStatusText.text = "Pins reset";
+            yield return new WaitForSeconds(1f);
+            
+            ResetPins();
+            isFrameComplete = false;
         }
-        else 
+        
+        isWaitingForReset = false;
+        OnRoundReady?.Invoke();
+    }
+    
+    void ProcessFrame()
+{
+    if (throwNumber == 1)
+    {
+        pinsDownFirstThrow = pinsDownThisThrow;
+        
+        if (pinsDownThisThrow == 10) // STRIKE
         {
+            if (frameStatusText != null)
+            {
+                frameStatusText.text = "Strike";
+                frameStatusText.color = Color.green;
+            }
             currentFrame++;
             throwNumber = 1;
-            needResetPins = true; 
+            isFrameComplete = true;
         }
-        
-        if (needResetPins)
+        else
         {
-            ResetPins();
-        }
-        
-        pinsDownThisThrow = 0;
-        
-        if (currentFrame > 10)
-        {
-            scoreText.text = $"FINAL SCORE: {totalScore}";
+            if (frameStatusText != null)
+            {
+                frameStatusText.text = $"Throw 1: {pinsDownThisThrow} pins";
+                frameStatusText.color = Color.white;
+            }
+            throwNumber = 2;
+            isFrameComplete = false;
         }
     }
+    else 
+    {
+        int totalInFrame = pinsDownFirstThrow + pinsDownThisThrow;
+        
+        // Отладка в консоль
+        Debug.Log($"Первый бросок: {pinsDownFirstThrow}, Второй: {pinsDownThisThrow}, Сумма: {totalInFrame}");
+        
+        if (totalInFrame == 10) // SPARE
+        {
+            if (frameStatusText != null)
+            {
+                frameStatusText.text = "Spare";
+                frameStatusText.color = Color.cyan;
+            }
+        }
+        else
+        {
+            if (frameStatusText != null)
+            {
+                frameStatusText.text = "Total: " + pinsDownFirstThrow.ToString() + " + " + pinsDownThisThrow.ToString() + " = " + totalInFrame.ToString() + " points";
+                frameStatusText.color = Color.white;
+            }
+        }
+        
+        currentFrame++;
+        throwNumber = 1;
+        isFrameComplete = true;
+    }
+    
+    CalculateTotalScore();
+    
+    pinsDownThisThrow = 0;
+    
+    if (currentFrame > 10)
+    {
+        if (frameStatusText != null)
+        {
+            frameStatusText.text = "Game over";
+        }
+        if (scoreText != null)
+        {
+            scoreText.text = $"Final score: {totalScore}";
+        }
+    }
+}
     
     void CalculateTotalScore()
     {
@@ -99,7 +175,7 @@ public class BowlingScore : MonoBehaviour
         {
             if (throwIndex >= currentThrow) break;
             
-            if (throws[throwIndex] == 10) // STRIKE
+            if (throws[throwIndex] == 10) 
             {
                 int bonus1 = (throwIndex + 1 < currentThrow) ? throws[throwIndex + 1] : 0;
                 int bonus2 = (throwIndex + 2 < currentThrow) ? throws[throwIndex + 2] : 0;
@@ -111,7 +187,7 @@ public class BowlingScore : MonoBehaviour
                 int firstThrow = throws[throwIndex];
                 int secondThrow = (throwIndex + 1 < currentThrow) ? throws[throwIndex + 1] : 0;
                 
-                if (firstThrow + secondThrow == 10 && secondThrow > 0) // SPARE
+                if (firstThrow + secondThrow == 10 && secondThrow > 0)
                 {
                     int bonus = (throwIndex + 2 < currentThrow) ? throws[throwIndex + 2] : 0;
                     totalScore += 10 + bonus;
@@ -124,7 +200,7 @@ public class BowlingScore : MonoBehaviour
             }
         }
     }
-    
+
     void ResetPins()
     {
         for (int i = 0; i < pins.Length; i++)
@@ -132,33 +208,66 @@ public class BowlingScore : MonoBehaviour
             pins[i].transform.position = initialPinPositions[i];
             pins[i].transform.rotation = initialPinRotations[i];
             
-            if (pinRigidbodies[i] != null)
+            Rigidbody rb = pinRigidbodies[i];
+            if (rb != null)
             {
-                pinRigidbodies[i].velocity = Vector3.zero;
-                pinRigidbodies[i].angularVelocity = Vector3.zero;
+                rb.velocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
+                rb.useGravity = false;
             }
             
             Pin pinScript = pins[i].GetComponent<Pin>();
             if (pinScript != null)
                 pinScript.ResetPin();
         }
+        Invoke("EnableGravity", 0.5f);
+    }
+
+    void EnableGravity()
+    {
+        for (int i = 0; i < pins.Length; i++)
+        {
+            Rigidbody rb = pinRigidbodies[i];
+            if (rb != null)
+            {
+                rb.useGravity = true;
+            }
+        }
     }
     
-    public bool CanThrowAgain()
+    IEnumerator SmoothReset(GameObject pin, Vector3 targetPos, Quaternion targetRot)
     {
-        return throwNumber == 2 && currentFrame <= 10;
+        Vector3 startPos = pin.transform.position;
+        Quaternion startRot = pin.transform.rotation;
+        float elapsed = 0;
+        float duration = 0.3f;
+        
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = elapsed / duration;
+            pin.transform.position = Vector3.Lerp(startPos, targetPos, t);
+            pin.transform.rotation = Quaternion.Slerp(startRot, targetRot, t);
+            yield return null;
+        }
+        
+        pin.transform.position = targetPos;
+        pin.transform.rotation = targetRot;
     }
     
     void UpdateUI()
     {
         if (scoreText != null)
         {
-            string info = $"Score: {totalScore}\nFrame: {currentFrame}";
-            if (throwNumber == 1)
-                info += "\nThrow: 1";
-            else
-                info += $"\nThrow: 2 (first: {pinsDownPreviousThrow})";
-            scoreText.text = info;
+            scoreText.text = $"Score: {totalScore}";
+        }
+        
+        if (currentThrowText != null)
+        {
+            currentThrowText.text = $"This throw: {pinsDownThisThrow} pins";
         }
     }
+    
+    public int GetCurrentThrowNumber() => throwNumber;
+    public bool IsWaiting() => isWaitingForReset;
 }
