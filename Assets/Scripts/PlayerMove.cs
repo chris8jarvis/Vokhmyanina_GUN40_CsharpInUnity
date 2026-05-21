@@ -27,13 +27,16 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private Color pointBColor = Color.red;
     [SerializeField] private Color pointCColor = Color.blue;
 
+    //сохраняем точки-пункты 
     private List<Transform> waypoints;
+
+    //словарь для запоминания цвета пунктов
     private Dictionary<Transform, Color> waypointColors;
     private Renderer playerRenderer;
 
     void Start()
     {
-        waypoints = new List<Transform> { pointA, pointB, pointC, pointD };
+        waypoints = new List<Transform> { pointA, pointB, pointC, pointD }; //список точек в порядке движения сферы
 
         playerRenderer = GetComponent<Renderer>();
         if (playerMaterial == null && playerRenderer != null)
@@ -46,6 +49,8 @@ public class PlayerMove : MonoBehaviour
             MoveAlongPath();
         }   
     }
+
+    //красим кубы в соответствующие цвета
     void AssignColorsToCubes()
     {
         if (pointB != null)
@@ -63,6 +68,7 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
+    //движение по маршруту
      public void MoveAlongPath()
     {
         if (waypoints.Count == 0) return;
@@ -90,6 +96,7 @@ public class PlayerMove : MonoBehaviour
         pathSequence.SetLoops(-1, LoopType.Yoyo);
     }
 
+    //при достижении точки-пункта "B", модификации сферы 
      void OnReachPointB()
     {
         Sequence effectSequence = DOTween.Sequence();
@@ -101,6 +108,7 @@ public class PlayerMove : MonoBehaviour
         effectSequence.Play();
     }
 
+    //при достижении точки-пункта "C", модификации сферы 
     void OnReachPointC()
     {
         Sequence effectSequence = DOTween.Sequence();
@@ -112,12 +120,14 @@ public class PlayerMove : MonoBehaviour
         effectSequence.Play();
     }
 
+    //смена цвета
     void ChangeColor(Color newColor)
     {
         if (playerMaterial != null)
             playerMaterial.color = newColor;
     }
-    
+
+    //плавная смена цвета    
     Tweener ChangeColorWithTween(Color newColor, float duration)
     {
         if (playerMaterial != null)
