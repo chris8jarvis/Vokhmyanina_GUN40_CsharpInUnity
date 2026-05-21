@@ -701,7 +701,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: ccc069bff74752e4cb06e89f39726e70, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -765,6 +765,13 @@ MonoBehaviour:
   moveDuration: 0.8
   easeType: 4
   autoPlay: 1
+  scaleUpDuration: 0.3
+  scaleDownDuration: 0.3
+  scaleTarget: {x: 1.2, y: 1.2, z: 1.2}
+  playerMaterial: {fileID: 2100000, guid: ccc069bff74752e4cb06e89f39726e70, type: 2}
+  defaultColor: {r: 1, g: 1, b: 1, a: 1}
+  pointBColor: {r: 1, g: 0, b: 0, a: 1}
+  pointCColor: {r: 0, g: 0, b: 1, a: 1}
 --- !u!1 &1850084268
 GameObject:
   m_ObjectHideFlags: 0
