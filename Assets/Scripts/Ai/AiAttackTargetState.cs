@@ -9,7 +9,10 @@ public class AiAttackTargetState : AiState
     }
 
     public void Enter(AiAgent agent) {
+        if (agent.weapons != null && agent.weapons.enabled)
         agent.weapons.ActivateWeapon();
+        
+        //agent.weapons.ActivateWeapon();
         
 
         agent.navMeshAgent.stoppingDistance = agent.config.attackStoppingDistance;
@@ -34,13 +37,16 @@ public class AiAttackTargetState : AiState
 
     private void UpdateFiring(AiAgent agent) {
         if (agent.targeting.TargetInSight) {
+            if (agent.weapons != null && agent.weapons.enabled)
             agent.weapons.SetFiring(true);
         } else {
+            if (agent.weapons != null && agent.weapons.enabled)
             agent.weapons.SetFiring(false);
         }
     }
 
     public void Exit(AiAgent agent) {
+        if (agent.weapons != null && agent.weapons.enabled)
         agent.weapons.DeactivateWeapon();
         agent.navMeshAgent.stoppingDistance = 0.0f;
     }
