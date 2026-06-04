@@ -8,6 +8,7 @@ public class MeleeWeapon : MonoBehaviour
     public float attackRange = 1.8f;
     public float attackCooldown = 1f;
     public LayerMask targetLayer;
+    public ParticleSystem bloodEffect;
     
     private float lastAttackTime;
     private Animator animator;
@@ -59,6 +60,12 @@ public class MeleeWeapon : MonoBehaviour
                 Vector3 direction = (hit.transform.position - weaponTransform.position).normalized;
                 health.TakeDamage(damage, direction);
                 Debug.Log($"Нанесён урон {damage} цели {hit.name}");
+
+                 if (bloodEffect != null)
+                {
+                    ParticleSystem blood = Instantiate(bloodEffect, hit.transform.position, Quaternion.identity);
+                    Destroy(blood.gameObject, 1f);
+                }
             }
         }
     }
