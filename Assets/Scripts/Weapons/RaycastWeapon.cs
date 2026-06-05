@@ -26,6 +26,9 @@ public class RaycastWeapon : MonoBehaviour
     public int clipSize = 30;
     public int clipCount = 2;
     public float damage = 10;
+    public AudioClip shotSound;
+    private AudioSource audioSource;
+
 
     public RuntimeAnimatorController animator;
     public ParticleSystem[] muzzleFlash;
@@ -43,6 +46,11 @@ public class RaycastWeapon : MonoBehaviour
 
     private void Awake() {
         recoil = GetComponent<WeaponRecoil>();
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            Debug.LogWarning("AudioSource component not found on " + gameObject.name);
+        }
     }
 
     Vector3 GetPosition(Bullet bullet) {
@@ -159,6 +167,11 @@ public class RaycastWeapon : MonoBehaviour
             return;
         }
         ammoCount--;
+
+        if (shotSound != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(shotSound, 1.0f);
+        }
 
         foreach (var particle in muzzleFlash) {
             particle.Emit(1);
