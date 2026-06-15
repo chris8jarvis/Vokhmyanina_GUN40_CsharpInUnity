@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7614931083682353091}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Clavicle_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5871976416915195826}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: MeshSockets
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8247260975935278658}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Spine_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -248,7 +248,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4682693971658457899}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Ankle_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -283,7 +283,7 @@ GameObject:
   - component: {fileID: 3746319372958890011}
   - component: {fileID: 5758231433837440312}
   - component: {fileID: 5994348573450812953}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: UpperLeg_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -414,7 +414,7 @@ GameObject:
   - component: {fileID: 6080116811373493442}
   - component: {fileID: 187537506091919607}
   - component: {fileID: 1389371748002897593}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: LowerLeg_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -545,7 +545,7 @@ GameObject:
   - component: {fileID: 498145051002863115}
   - component: {fileID: 6310732812903929542}
   - component: {fileID: 651052976019989175}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Foreground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -621,7 +621,7 @@ GameObject:
   - component: {fileID: 7079525634454589886}
   - component: {fileID: 6176119702006876255}
   - component: {fileID: 2229467270713063210}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Elbow_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -749,7 +749,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5133523635116790903}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Clavicle_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -772,6 +772,90 @@ Transform:
   - {fileID: 3680817480697483014}
   m_Father: {fileID: 8247260975935278658}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3875779223589576114
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3115794706383016431}
+  - component: {fileID: 177279707394217925}
+  m_Layer: 6
+  m_Name: MinimapIcon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3115794706383016431
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3875779223589576114}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 907898562233186042}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &177279707394217925
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3875779223589576114}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Color: {r: 0.76729554, g: 0.04584455, b: 0.04584455, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.2, y: 0.2}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &3914077947994309643
 GameObject:
   m_ObjectHideFlags: 0
@@ -782,7 +866,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5594346472169119460}
   - component: {fileID: 5349072811307477105}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: UIHealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -836,7 +920,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8682722920772316372}
   - component: {fileID: 785808817712668782}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: SpineSocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -886,7 +970,7 @@ GameObject:
   - component: {fileID: 5848640822264666954}
   - component: {fileID: 4708808122988858178}
   - component: {fileID: 2002078053217378841}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Shoulder_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1016,7 +1100,7 @@ GameObject:
   - component: {fileID: 2183822214228422451}
   - component: {fileID: 607820349203496402}
   - component: {fileID: 5499217297745859313}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Hips
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1098,7 +1182,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6063038589044932797}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Armature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1130,7 +1214,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4473055438888428609}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Ankle_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1309,6 +1393,7 @@ MonoBehaviour:
   clipSize: 30
   clipCount: 2
   damage: 10
+  shotSound: {fileID: 0}
   animator: {fileID: 0}
   muzzleFlash: []
   hitEffect: {fileID: 0}
@@ -1325,7 +1410,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9176586510397601841}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1360,7 +1445,7 @@ GameObject:
   - component: {fileID: 7834027123315675680}
   - component: {fileID: 3150234675030583221}
   - component: {fileID: 2320876976005414884}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: LowerLeg_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1490,7 +1575,7 @@ GameObject:
   - component: {fileID: 7281821116569352265}
   - component: {fileID: 2079617281242776863}
   - component: {fileID: 3596814730624305716}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1566,7 +1651,7 @@ GameObject:
   - component: {fileID: 5375433406141797358}
   - component: {fileID: 7233294879418545745}
   - component: {fileID: 179447951555896244}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Elbow_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1695,7 +1780,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2198178733420977415}
   - component: {fileID: 8404370675755883240}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: RightHipSocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1742,7 +1827,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6123855096024880620}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Ball_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1776,7 +1861,7 @@ GameObject:
   - component: {fileID: 990536095680896561}
   - component: {fileID: 3196458275528363759}
   - component: {fileID: 4740437231806400021}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Shoulder_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1904,7 +1989,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1844725780860054598}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Neck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1939,7 +2024,7 @@ GameObject:
   - component: {fileID: 7124775720399812782}
   - component: {fileID: 2722626382254673515}
   - component: {fileID: 7109857296697723449}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: UpperLeg_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2067,7 +2152,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1069434030225399042}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Hand_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2098,7 +2183,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8083992293699767938}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Ball_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2132,7 +2217,7 @@ GameObject:
   - component: {fileID: 3457712040523506318}
   - component: {fileID: 4972145686583033846}
   - component: {fileID: 4711397168538914483}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Spine_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2259,7 +2344,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6651473506189435474}
   - component: {fileID: 1429058590104569024}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: RightHandSocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2308,7 +2393,7 @@ GameObject:
   - component: {fileID: 4270659318328445791}
   - component: {fileID: 2308056614814224783}
   - component: {fileID: 3409899071691990181}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2390,7 +2475,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2902124018563735880}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Spine_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2436,7 +2521,7 @@ GameObject:
   - component: {fileID: 5816564377428224567}
   - component: {fileID: 6077704185828504121}
   - component: {fileID: 1308620916003633898}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Enemy
   m_TagString: Agent
   m_Icon: {fileID: 0}
@@ -2461,6 +2546,7 @@ Transform:
   - {fileID: 4270659318328445791}
   - {fileID: 5871976416915195826}
   - {fileID: 8868349364350285166}
+  - {fileID: 3115794706383016431}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!95 &722749614434114865
@@ -2621,7 +2707,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27f5f598f3a2b5342bb91cf2dbf989af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialState: 4
+  initialState: 8
   config: {fileID: 11400000, guid: 194a4ab50b710d647947d0958251c330, type: 2}
   navMeshAgent: {fileID: 0}
   ragdoll: {fileID: 0}
@@ -2736,7 +2822,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3525818977387518087}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Hand_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2770,7 +2856,7 @@ GameObject:
   - component: {fileID: 6441491368904426610}
   - component: {fileID: 7690388244141685477}
   - component: {fileID: 3156487680942797133}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
