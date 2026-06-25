@@ -151,6 +151,12 @@ public class RaycastWeapon : MonoBehaviour
             if (hitBox) {
                 hitBox.OnRaycastHit(this, ray.direction);
             }
+            
+            DestructibleObject destructible = hitInfo.collider.GetComponent<DestructibleObject>();
+            if (destructible != null)
+            {
+                destructible.TakeDamage(damage);
+            }
         }
 
         if (bullet.tracer) {
