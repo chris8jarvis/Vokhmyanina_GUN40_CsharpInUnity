@@ -153,6 +153,12 @@ public class RaycastWeapon : MonoBehaviour
             }
             
             DestructibleObject destructible = hitInfo.collider.GetComponent<DestructibleObject>();
+
+            if (destructible == null)
+            {
+                destructible = hitInfo.collider.GetComponentInParent<DestructibleObject>();
+            }
+
             if (destructible != null)
             {
                 destructible.TakeDamage(damage);
