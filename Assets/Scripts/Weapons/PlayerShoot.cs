@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class PlayerShoot : MonoBehaviour
 {
     public RaycastWeapon weapon;
     public KeyCode shootKey = KeyCode.E;
