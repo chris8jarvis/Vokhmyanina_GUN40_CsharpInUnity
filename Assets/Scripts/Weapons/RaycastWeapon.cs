@@ -49,7 +49,7 @@ public class RaycastWeapon : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null)
         {
-            Debug.LogWarning("AudioSource component not found on " + gameObject.name);
+           // Debug.LogWarning("AudioSource component not found on " + gameObject.name);
         }
     }
 

@@ -186,6 +186,7 @@ public class AiWeapons : MonoBehaviour
     }
 
     public void OnAnimationEvent(string eventName) {
+        if (!enabled || currentWeapon == null) return;
         switch (eventName) {
             case "attach_weapon":
                 AttachWeapon();

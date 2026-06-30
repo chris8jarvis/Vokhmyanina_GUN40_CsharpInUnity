@@ -11,7 +11,6 @@ public class DoorTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             door.OpenDoor();
-            Debug.Log("Игрок вошёл в зону - дверь открывается");
         }
     }
 
@@ -20,7 +19,6 @@ public class DoorTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             door.CloseDoor();
-            Debug.Log("Игрок вышел из зоны - дверь закрывается");
         }
     }
 }

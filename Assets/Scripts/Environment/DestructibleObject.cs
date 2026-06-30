@@ -25,7 +25,6 @@ public class DestructibleObject : MonoBehaviour
     public void TakeDamage(float damage)
     {
         health -= damage;
-        Debug.Log($"{gameObject.name} получил {damage} урона. Осталось HP: {health}");
 
         if (health <= 0)
         {

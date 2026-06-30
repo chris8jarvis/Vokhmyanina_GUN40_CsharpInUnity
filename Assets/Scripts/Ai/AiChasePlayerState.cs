@@ -12,32 +12,31 @@ public class AiChasePlayerState : AiState
         return AiStateId.ChasePlayer;
     }
 
-    public void Enter(AiAgent agent) {
-
+    public void Enter(AiAgent agent) 
+    {
+        agent.navMeshAgent.stoppingDistance = 0f;
+        agent.navMeshAgent.speed = agent.config.findTargetSpeed;
     }
 
-    public void Update(AiAgent agent) {
-         if (!agent.enabled) {
-             return;
-         }
+    public void Update(AiAgent agent) 
+    {
+         if (!agent.targeting.HasTarget)
+        {
+            agent.stateMachine.ChangeState(AiStateId.FindTarget);
+            return;
+        }
 
-         timer -= Time.deltaTime;
-         if (!agent.navMeshAgent.hasPath) {
-             agent.navMeshAgent.destination = agent.playerTransform.position;
-         }
+        agent.navMeshAgent.destination = agent.targeting.TargetPosition;
 
-         if (timer < 0.0f) {
-             Vector3 direction = (agent.playerTransform.position - agent.navMeshAgent.destination);
-             direction.y = 0;
-             if (direction.sqrMagnitude > agent.config.maxDistance * agent.config.maxDistance) {
-                 if (agent.navMeshAgent.pathStatus != NavMeshPathStatus.PathPartial) {
-                     agent.navMeshAgent.destination = agent.playerTransform.position;
-                 }
-             }
-             timer = agent.config.maxTime;
+        float distance = agent.targeting.TargetDistance;
+        if (distance <= agent.config.attackStoppingDistance)
+        {
+            agent.stateMachine.ChangeState(AiStateId.MeleeAttackTarget);
         }
     }
 
-    public void Exit(AiAgent agent) {
+    public void Exit(AiAgent agent)
+    {
+        agent.navMeshAgent.stoppingDistance = 0f;
     }
 }
