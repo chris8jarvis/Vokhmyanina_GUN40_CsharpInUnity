@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerDoorInteract : MonoBehaviour
 {
-    public float interactRange = 3f;
+    public float interactRange = 30f;
 
     void Update()
     {
