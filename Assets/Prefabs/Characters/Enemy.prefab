@@ -1362,7 +1362,7 @@ MonoBehaviour:
   attackCooldown: 1
   targetLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 513
   bloodEffect: {fileID: 4407856502099564203, guid: 484b49acf3721164d9adb45e70394bfc,
     type: 3}
 --- !u!114 &4855454733431460306
