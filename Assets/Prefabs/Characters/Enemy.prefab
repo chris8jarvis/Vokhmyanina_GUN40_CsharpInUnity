@@ -1266,13 +1266,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4618477874931063164}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.70710707, z: -0, w: 0.70710653}
-  m_LocalPosition: {x: 0.257, y: 0.605, z: -0.011}
-  m_LocalScale: {x: 0.31952977, y: 0.05689747, z: 0.021130443}
+  m_LocalRotation: {x: -0.07453615, y: -0.028532011, z: 0.56518966, w: -0.82109135}
+  m_LocalPosition: {x: -0.18424015, y: -0.15799385, z: 0.532436}
+  m_LocalScale: {x: 0.31953588, y: 0.05689829, z: 0.02113086}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6240719009523798687}
-  m_Father: {fileID: 907898562233186042}
+  m_Father: {fileID: 1069434030225399042}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2862197964506899408
 MeshFilter:
@@ -1358,7 +1358,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 25
-  attackRange: 3
+  attackRange: 10
   attackCooldown: 1
   targetLayer:
     serializedVersion: 2
@@ -2171,7 +2171,8 @@ Transform:
   m_LocalPosition: {x: -0.26399994, y: 0.000000005355105, z: -0.000000043597538}
   m_LocalScale: {x: 0.99999654, y: 0.9999943, z: 0.99999607}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 8868349364350285166}
   m_Father: {fileID: 6748188452530323435}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6911707480085452817
@@ -2545,7 +2546,6 @@ Transform:
   - {fileID: 662447028722561263}
   - {fileID: 4270659318328445791}
   - {fileID: 5871976416915195826}
-  - {fileID: 8868349364350285166}
   - {fileID: 3115794706383016431}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
