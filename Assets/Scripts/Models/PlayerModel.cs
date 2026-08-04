@@ -50,5 +50,23 @@ namespace Models
             _isGameOver.Value = false;
             Debug.Log("[PlayerModel] Game reset");
         }
+
+        public GameData GetSaveData(Vector3 playerPosition)
+        {
+            return new GameData(_health.Value, _score.Value, playerPosition);
+        }
+
+        public void LoadSaveData(GameData data)
+        {
+            if (data == null)
+            {
+                return;
+            }
+
+            _health.Value = data.Health;
+            _score.Value = data.Score;
+            _isGameOver.Value = false;
+            Debug.Log($"[PlayerModel] Game loaded: Health={_health.Value}, Score={_score.Value}");
+        }
     }
 }
