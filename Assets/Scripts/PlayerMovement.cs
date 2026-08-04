@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement Settings")]
+    [SerializeField] private float _baseSpeed = 8f;
     [SerializeField] private float _moveSpeed = 8f;
     [SerializeField] private float _rotationSpeed = 720f;
     [SerializeField] private float _jumpForce = 5f;
@@ -16,10 +17,14 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 _moveDirection;
     private bool _isGrounded;
 
+    private float _currentSpeed;
+    private float _speedBoostTimer;
+
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
         _rb.freezeRotation = true;
+        _currentSpeed = _baseSpeed;
     }
 
     private void Update()
@@ -37,6 +42,16 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && _isGrounded)
         {
             Jump();
+        }
+
+        if (_speedBoostTimer > 0)
+        {
+            _speedBoostTimer -= Time.deltaTime;
+            if (_speedBoostTimer <= 0)
+            {
+                _currentSpeed = _baseSpeed;
+                Debug.Log("[PlayerMovement] Speed boost ended");
+            }
         }
     }
 
@@ -70,6 +85,13 @@ public class PlayerMovement : MonoBehaviour
     {
         _rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
         _isGrounded = false; 
+    }
+
+    public void ApplySpeedBoost(float multiplier, float duration)
+    {
+        _currentSpeed = _baseSpeed * multiplier;
+        _speedBoostTimer = duration;
+        Debug.Log($"[PlayerMovement] Speed boost applied: {_currentSpeed} (base: {_baseSpeed})");
     }
 
     private void OnDrawGizmosSelected()
