@@ -23,9 +23,16 @@ namespace Models
         {
             while (true)
             {
+                token.ThrowIfCancellationRequested();
                 await UniTask.Delay(NumericConstants.One * 1000, cancellationToken: token);
                 _gameTime.Value++;
             }
+        }
+        public void Dispose()
+        {
+            _cts?.Cancel();
+            _cts?.Dispose();
+            _cts = null;
         }
     }
 }
