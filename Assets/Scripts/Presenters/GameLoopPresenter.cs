@@ -8,6 +8,8 @@ using Presenters.Interfaces;
 using UniRx;
 using UnityEngine;
 using Zenject;
+using Models;
+using Random = UnityEngine.Random;
 
 namespace Presenters
 {
@@ -19,6 +21,7 @@ namespace Presenters
         private readonly IPlayerModel _playerModel;
         private readonly IStickModel _stickModel;
         private readonly IGameScoreModel _gameScoreModel;
+        private readonly IBonusModel _bonusModel; 
         private readonly IMessageBroker _messageBroker;
         private readonly Vector2 _startPosition;
         private Vector2 _currentStickPosition;
@@ -30,6 +33,7 @@ namespace Presenters
             IPlayerModel playerModel, 
             IStickModel stickModel,
             IGameScoreModel gameScoreModel,
+            IBonusModel bonusModel,
             IMessageBroker broker,
             [Inject(Id = "Start")] Transform startPosition)
         {
@@ -37,6 +41,7 @@ namespace Presenters
             _playerModel = playerModel;
             _stickModel = stickModel;
             _gameScoreModel = gameScoreModel;
+            _bonusModel = bonusModel;
             _messageBroker = broker;
             _startPosition = startPosition.position;
         }
@@ -46,6 +51,7 @@ namespace Presenters
             Subscribe();
             InitializeObjectsAtStart();
             _gameScoreModel.ResetScore();
+            _bonusModel.ClearBonuses();
         }
 
         public void Dispose() => Unsubscribe();
@@ -103,6 +109,7 @@ namespace Presenters
         {
             _playerModel.DisablePlayer();
             _stickModel.DisableStick();
+            _bonusModel.ClearBonuses();
         }
 
         private void OnMoveSuccessfull(MoveSuccessfulMessage message) => SetNextGameIteration();
@@ -118,13 +125,47 @@ namespace Presenters
 
             _camera.transform
                 .DOMove(CalculateNewCameraPosition(), NumericConstants.Half)
-                .OnComplete(() => _messageBroker.Publish(new SetInputActiveStateMessage { IsActive = true }))
+                .OnComplete(() => {
+                    _messageBroker.Publish(new SetInputActiveStateMessage { IsActive = true });
+                    SpawnBonusBetweenPlatforms();
+                })
                 .Play();
             
             Vector3 CalculateNewCameraPosition() =>
                 new(_startPosition.x + Constants.BuildingPositionDelta * _gameIterations - Constants.BuildingPositionDelta,
                     _camera.transform.position.y,
                     _camera.transform.position.z);
+        }
+        private void SpawnBonusBetweenPlatforms()
+        {
+            Vector2 currentPlatformPosition = _buildingModel.GetPositionForPlayer(true);
+            Vector2 nextPlatformPosition = _buildingModel.GetPositionForPlayer(false);
+            
+            float midX = (currentPlatformPosition.x + nextPlatformPosition.x) / 2f;
+            float yOffset = 0.5f;
+            Vector3 spawnPosition = new Vector3(midX, currentPlatformPosition.y + yOffset, 0f);
+
+            Bonuses bonusType = Random.Range(0, 2) == 0 ? Bonuses.Star : Bonuses.Heart;
+
+            GameObject bonusPrefab = Resources.Load<GameObject>($"Bonuses/{bonusType}");
+            if (bonusPrefab != null)
+            {
+                GameObject bonusObj = GameObject.Instantiate(bonusPrefab, spawnPosition, Quaternion.identity);
+                var bonusCollector = bonusObj.GetComponent<BonusCollector>();
+                if (bonusCollector != null)
+                {
+                    bonusCollector.Initialize(bonusType, _bonusModel);
+                }
+                else
+                {
+                    bonusCollector = bonusObj.AddComponent<BonusCollector>();
+                    bonusCollector.Initialize(bonusType, _bonusModel);
+                }
+            }
+            else
+            {
+                Debug.LogWarning($"Bonus prefab not found: Bonuses/{bonusType}");
+            }
         }
     }
 }
