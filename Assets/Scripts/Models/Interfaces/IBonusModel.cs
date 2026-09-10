@@ -6,9 +6,10 @@ namespace Models.Interfaces
     public interface IBonusModel : IDisposable
     {
         IReadOnlyReactiveCollection<Bonuses> CollectedBonuses { get; }
+        IReadOnlyReactiveCollection<Bonuses> SavedBonuses { get; }
         void AddBonus(Bonuses bonus);
-        void ClearBonuses();
-        void SaveBonuses();
-        void LoadBonuses();
+        void SaveAndClearCurrentSession();
+        void ClearCurrentSession(); 
+        void LoadSavedBonuses();
     }
 }

@@ -3,6 +3,7 @@ using Models;
 using Presenters;
 using UnityEngine;
 using Zenject;
+using Presenters.Menu;
 
 namespace Installers
 {
@@ -40,6 +41,7 @@ namespace Installers
             Container.BindInterfacesAndSelfTo<InputPresenter>().AsSingle();
             Container.BindInterfacesAndSelfTo<StickBuildPresenter>().AsSingle();
             Container.BindInterfacesAndSelfTo<GameLoopPresenter>().AsSingle();
+            Container.Bind<BonusUIView>().FromComponentInHierarchy().AsSingle();
         }
     }
 }

@@ -51,7 +51,7 @@ namespace Presenters
             Subscribe();
             InitializeObjectsAtStart();
             _gameScoreModel.ResetScore();
-            _bonusModel.ClearBonuses();
+             _bonusModel.ClearCurrentSession();
         }
 
         public void Dispose() => Unsubscribe();
@@ -109,7 +109,7 @@ namespace Presenters
         {
             _playerModel.DisablePlayer();
             _stickModel.DisableStick();
-            _bonusModel.ClearBonuses();
+            _bonusModel.SaveAndClearCurrentSession();
         }
 
         private void OnMoveSuccessfull(MoveSuccessfulMessage message) => SetNextGameIteration();
