@@ -147,13 +147,20 @@ namespace Game.GameEngine.Ecs
             this.gatherStatePool.SetComponent(entity, GatherState.MOVE_TO_HOME);
 
             //TODO: FIND COMMAND CENTER
-            var commandCenter = GameObject.FindObjectOfType<CommandCenterEntity>();
-            if (commandCenter == null)
+            // var commandCenter = GameObject.FindObjectsOfType<CommandCenterEntity>();
+            // if (commandCenter == null)
+            // {
+            //     //Command center is not found!
+            //     this.StopGathering(entity);
+            //     return;
+            // }
+            var commandCenters = GameObject.FindObjectsOfType<CommandCenterEntity>();
+            if (commandCenters == null || commandCenters.Length == 0)
             {
-                //Command center is not found!
                 this.StopGathering(entity);
                 return;
             }
+            var commandCenter = commandCenters[Random.Range(0, commandCenters.Length)];
 
             ref var homeTransform = ref this.transformPool.GetComponent(commandCenter.Id);
 
