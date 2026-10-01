@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: NewCharacterConfig
   m_EditorClassIdentifier: 
   radius: 0
-  hitPoints: 100
-  moveSpeed: 5
-  damage: 1
+  hitPoints: 200
+  moveSpeed: 2
+  damage: 5
   minDistance: 1
   animationTime: 1.4
   timeBetweenAttack: 0.8
