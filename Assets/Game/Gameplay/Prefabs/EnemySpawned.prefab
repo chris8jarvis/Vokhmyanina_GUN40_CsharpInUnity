@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 8106333423139658616}
   - component: {fileID: 6703444412255452984}
   - component: {fileID: 4593258123115961657}
+  - component: {fileID: 381289320337260246}
   m_Layer: 0
   m_Name: EnemySpawned
   m_TagString: Untagged
@@ -115,7 +116,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
@@ -156,6 +157,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aa8aa3dd15f16d4296ca0b73d81e872, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &381289320337260246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8808364874386477440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45c687e878eb24e4c872667e917f048e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
 --- !u!1001 &1997735179703792328
 PrefabInstance:
   m_ObjectHideFlags: 0
