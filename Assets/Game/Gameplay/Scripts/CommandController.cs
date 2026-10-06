@@ -61,8 +61,4 @@ namespace SampleProject
             this.entity.RemoveData<CommandRequest>();
         }
     }
-
-    
-    
-    
 }
